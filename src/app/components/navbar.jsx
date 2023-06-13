@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const vertical = "bottom";
+  const vertical = "top";
   const horizontal = "center";
 
   const handleClosebar = () => {

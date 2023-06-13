@@ -19,6 +19,7 @@ import Footer from "./components/footer.jsx";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
+import Link from "next/link.js";
 export default function Home() {
   return (
     <Box
@@ -83,6 +84,7 @@ export default function Home() {
             </Grid>
             <Button
               variant="contained"
+              color="success"
               href="./mypet"
               size="small"
               startIcon={<EditIcon />}
@@ -93,11 +95,41 @@ export default function Home() {
           </Grid>
         </Card>
       </Box>
-      <Typography
-        sx={{ color: "red", fontWeight: "bold", paddingLeft: "30px" }}
+      <Link href="/addmorepets" style={{ textDecoration: "none" }}>
+        <Typography
+          sx={{ color: "red", fontWeight: "bold", paddingLeft: "30px" }}
+        >
+          Add More Pets
+        </Typography>
+      </Link>
+      <Box
+        display="flex"
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        alignContent="center"
+        margin="30px 10px 10px"
+        padding="0 10px"
       >
-        Add More Pets
-      </Typography>
+        <Card sx={{ display: "flex", padding: "10px" }}>
+          <Grid container justifyContent="flex-start" padding="0 15px">
+            <Typography>
+              Alert our communities when you loss your beloved pet. Just press
+              the "Help" Button to share your Pet Info with our communities.
+            </Typography>
+            <Button
+              variant="contained"
+              color="error"
+              href="./findmypet/chloe"
+              size="small"
+              startIcon={<EditIcon />}
+              sx={{ padding: "8px 15px", marginTop: "10px" }}
+            >
+              Help
+            </Button>
+          </Grid>
+        </Card>
+      </Box>
       <Footer />
     </Box>
   );
