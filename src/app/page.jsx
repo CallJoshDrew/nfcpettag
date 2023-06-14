@@ -85,7 +85,7 @@ export default function Home() {
             <Button
               variant="contained"
               color="success"
-              href="./mypet"
+              href="./mypets/chloe"
               size="small"
               startIcon={<EditIcon />}
               sx={{ padding: "8px 15px" }}

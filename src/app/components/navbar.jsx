@@ -67,7 +67,7 @@ export default function Navbar() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem sx={{width: "160px"}}>
-          <Link href="/profile" style={{ textDecoration: "none" }}>
+          <Link href="/profile" style={{ textDecoration: "none", color:"black" }}>
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
                 <AccountCircleIcon />
@@ -78,17 +78,17 @@ export default function Navbar() {
         </MenuItem>
         <Divider />
         <MenuItem>
-          <Link href="/profile" style={{ textDecoration: "none" }}>
+          <Link href="/addmorepets" style={{ textDecoration: "none", color:"black"}}>
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
-                <PetsIcon />
+                <PetsIcon />  
               </ListItemIcon>
               <Typography marginLeft="5px">My Pets</Typography>
             </Box>
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link href="/about" style={{ textDecoration: "none" }}>
+          <Link href="/about" style={{ textDecoration: "none", color:"black"}}>
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
                 <InfoIcon />
