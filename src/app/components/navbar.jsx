@@ -83,7 +83,7 @@ export default function Navbar() {
               <ListItemIcon>
                 <PetsIcon />  
               </ListItemIcon>
-              <Typography marginLeft="5px">My Pets</Typography>
+              <Typography marginLeft="5px">Add More</Typography>
             </Box>
           </Link>
         </MenuItem>

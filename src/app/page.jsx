@@ -14,8 +14,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import Navbar from "./components/navbar.jsx";
-import Footer from "./components/footer.jsx";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
@@ -23,12 +21,11 @@ import Link from "next/link.js";
 export default function Home() {
   return (
     <Box
-      height="100vh"
+      // height="100vh" 
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
     >
-      <Navbar />
       <Typography variant="h6" margin="20px 10px" padding="0 10px">
         Dashboard
       </Typography>
@@ -130,7 +127,6 @@ export default function Home() {
           </Grid>
         </Card>
       </Box>
-      <Footer />
     </Box>
   );
 }

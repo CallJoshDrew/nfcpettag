@@ -1,7 +1,8 @@
 "use client";
 
 import "./globals.css";
-
+import Navbar from "./components/navbar.jsx";
+import Footer from "./components/footer.jsx";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 
 export default function RootLayout({ children }) {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
         <CssBaseline />
-        <body>{children}</body>
+        <body><Navbar />{children}<Footer /></body>
     </html>
   );
 }
