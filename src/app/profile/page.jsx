@@ -16,8 +16,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Avatar from "@mui/material/Avatar";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import EmailIcon from "@mui/icons-material/Email";
+import PasswordIcon from "@mui/icons-material/Password";
 
 export default function Profile() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -43,8 +46,14 @@ export default function Profile() {
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
+      margin="90px 0 70px"
     >
-      <Typography variant="h6" margin="20px 10px" padding="0 10px">
+      <Typography
+        variant="h6"
+        fontWeight="bold"
+        margin="20px 10px"
+        padding="0 10px"
+      >
         Personal Info
       </Typography>
       <Grid
@@ -55,26 +64,38 @@ export default function Profile() {
         spacing={2}
         padding="10px 20px"
       >
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Avatar
             sx={{ width: 50, height: 50, border: 0.5, borderColor: "black" }}
             variant="rounded"
             src="./profile1.png"
           ></Avatar>
         </Grid>
-        <Grid item xs={9}>
-          <TextField id="profile name" label="Name" fullWidth />
+        <Grid item xs={10}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ padding: "8px 15px", marginTop: "10px" }}
+          >
+            Change
+          </Button>
         </Grid>
-        <Grid item xs={3}>
-          <Typography>Email</Typography>
+        <Grid item xs={2}>
+          <DriveFileRenameOutlineIcon />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={10}>
+          <TextField id="Name" label="Name" fullWidth />
+        </Grid>
+        <Grid item xs={2}>
+          <EmailIcon />
+        </Grid>
+        <Grid item xs={10}>
           <TextField id="email" label="Email" fullWidth />
         </Grid>
-        <Grid item xs={3}>
-          <Typography>Password</Typography>
+        <Grid item xs={2}>
+          <PasswordIcon />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={10}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel htmlFor="outlined-adornment-password">
               Password

@@ -43,15 +43,31 @@ export default function Navbar() {
 
   return (
     <React.Fragment>
-      <Grid container justifyContent="center" alignItems="center" padding="10px 20px" backgroundColor="#0E4B17">
-        <Grid item xs={10} >
-          <Typography variant="h5" color='white'>NFC PET TAG</Typography>
+      <Grid
+        container
+        position="fixed"
+        top="0"
+        zIndex="999"
+        justifyContent="center"
+        alignItems="center"
+        padding="10px 20px"
+        backgroundColor="#0E4B17"
+      >
+        <Grid item xs={10}>
+          <Typography variant="h5" color="white">
+            NFC PET TAG
+          </Typography>
         </Grid>
-        <Grid item xs={2} >
+        <Grid item xs={2}>
           <Tooltip title="My Profile">
             <IconButton onClick={handleIconClick} size="small" sx={{ ml: 2 }}>
               <Avatar
-                sx={{ width: 45, height: 45, border: 0.5, borderColor:"white"}}
+                sx={{
+                  width: 45,
+                  height: 45,
+                  border: 0.5,
+                  borderColor: "white",
+                }}
                 src="./profile1.png"
               ></Avatar>
             </IconButton>
@@ -66,8 +82,11 @@ export default function Navbar() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem sx={{width: "160px"}}>
-          <Link href="/profile" style={{ textDecoration: "none", color:"black" }}>
+        <MenuItem sx={{ width: "160px" }}>
+          <Link
+            href="/profile"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
                 <AccountCircleIcon />
@@ -78,17 +97,23 @@ export default function Navbar() {
         </MenuItem>
         <Divider />
         <MenuItem>
-          <Link href="/addmorepets" style={{ textDecoration: "none", color:"black"}}>
+          <Link
+            href="/addmorepets"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
-                <PetsIcon />  
+                <PetsIcon />
               </ListItemIcon>
               <Typography marginLeft="5px">Add More</Typography>
             </Box>
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link href="/about" style={{ textDecoration: "none", color:"black"}}>
+          <Link
+            href="/about"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <Box display="flex" alignItems="center" alignContent="center">
               <ListItemIcon>
                 <InfoIcon />

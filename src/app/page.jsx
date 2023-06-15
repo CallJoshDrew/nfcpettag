@@ -21,12 +21,13 @@ import Link from "next/link.js";
 export default function Home() {
   return (
     <Box
-      // height="100vh" 
+      // height="100vh"
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
+      margin="90px 0 70px"
     >
-      <Typography variant="h6" margin="20px 10px" padding="0 10px">
+      <Typography variant="h6" fontWeight="bold" margin="20px 10px" padding="0 10px">
         Dashboard
       </Typography>
       <Box
