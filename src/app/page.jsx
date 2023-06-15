@@ -25,7 +25,7 @@ export default function Home() {
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
-      margin="90px 0 70px"
+      margin="90px 0 90px"
     >
       <Typography variant="h6" fontWeight="bold" margin="20px 10px" padding="0 10px">
         Dashboard

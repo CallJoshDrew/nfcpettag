@@ -11,6 +11,7 @@ import {
   IconButton,
   InputAdornment,
   InputLabel,
+  MenuItem,
   OutlinedInput,
   Snackbar,
   TextField,
@@ -18,11 +19,44 @@ import {
 } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import PetsIcon from "@mui/icons-material/Pets";
+import StarIcon from "@mui/icons-material/Star";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CakeIcon from "@mui/icons-material/Cake";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LinkIcon from "@mui/icons-material/Link";
+
+const species = [
+  {
+    value: "Dog",
+    label: "Dog",
+  },
+  {
+    value: "Cat",
+    label: "Cat",
+  },
+];
+const gender = [
+  {
+    value: "Male",
+    label: "Male",
+  },
+  {
+    value: "Female",
+    label: "Female",
+  },
+];
+
+const spayed = [
+  {
+    value: "Yes",
+    label: "Yes",
+  },
+  {
+    value: "No",
+    label: "No",
+  },
+];
 
 export default function AddMorePets() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -41,13 +75,13 @@ export default function AddMorePets() {
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
-      margin="90px 0 70px"
+      margin="90px 0 90px"
     >
       <Typography
         variant="h6"
         fontWeight="bold"
         margin="20px 10px"
-        padding="0 10px"
+        padding="0 20px"
       >
         Please fill in details of your pet
       </Typography>
@@ -58,62 +92,100 @@ export default function AddMorePets() {
         alignItems="center"
         alignContent="center"
         spacing={2}
-        padding="10px 20px"
+        padding="10px 30px"
       >
         <Grid item xs={2}>
-          <PetsIcon />
+          <PetsIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField id="pet name" label="Pet Name" fullWidth />
         </Grid>
         <Grid item xs={2}>
-          <DescriptionIcon />
+          <Avatar
+            sx={{ width: 33, height: 33, backgroundColor:"black" }}
+            variant="rounded"
+          />
+        </Grid>
+        <Grid item xs={10}>
+          <Button variant="contained" size="small" sx={{ padding: "8px 15px" }}>
+            Add Photo
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <DescriptionIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField id="Breed/Type" label="Breed/Type" fullWidth />
         </Grid>
         <Grid item xs={2}>
-          <CakeIcon />
+          <StarIcon fontSize="large" />
+        </Grid>
+        <Grid item xs={10}>
+          <TextField
+            id="outlined-select-species"
+            select
+            label="Species"
+            defaultValue=""
+            fullWidth
+          >
+            {species.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={2}>
+          <CakeIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField id="Birthday" label="Birthday" fullWidth />
         </Grid>
         <Grid item xs={2}>
-          <PetsIcon />
-        </Grid>
-        <Grid item xs={10}>
-          <TextField id="Gender" label="Gender" fullWidth />
-        </Grid>
-        <Grid item xs={2}>
-          <LocalHospitalIcon />
+          <PetsIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField
-            id="Sprayed or Neutered"
-            label="Sprayed or Neutered"
+            id="outlined-select-species"
+            select
+            label="Gender"
+            defaultValue=""
             fullWidth
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <AddAPhotoIcon />
-        </Grid>
-        <Grid item xs={10}>
-          <Button
-            variant="contained"
-            size="small"
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
           >
-            Add Photo
-          </Button>
+            {gender.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
         <Grid item xs={2}>
-          <LinkIcon />
+          <LocalHospitalIcon fontSize="large" />
+        </Grid>
+        <Grid item xs={10}>
+          <TextField
+            id="outlined-select-sprayed"
+            select
+            label="Spayed or Neutered"
+            defaultValue=""
+            fullWidth
+          >
+            {spayed.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item xs={2} marginTop="5px">
+          <LinkIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <Button
             variant="contained"
             size="small"
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px" }}
+            fullWidth
           >
             Copy url for NFC pet tag
           </Button>
@@ -127,7 +199,7 @@ export default function AddMorePets() {
               borderRadius: "4px",
             }}
           >
-            https:/nfcpettag.com/janet/chlore
+            https://nfcpettag.com/findmypet/chlore
           </Typography>
         </Grid>
       </Grid>
@@ -136,7 +208,8 @@ export default function AddMorePets() {
         justifyContent="center"
         alignItems="center"
         spacing={2}
-        padding="0px 20px"
+        padding="0px 30px"
+        marginTop="5px"
       >
         <Grid item xs={9} align="right">
           <Button
@@ -144,7 +217,7 @@ export default function AddMorePets() {
             href="./"
             size="small"
             onClick={handleSave}
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px" }}
           >
             Save
           </Button>
@@ -154,7 +227,7 @@ export default function AddMorePets() {
             variant="contained"
             href="./"
             size="small"
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px" }}
           >
             Back
           </Button>

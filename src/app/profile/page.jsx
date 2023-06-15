@@ -18,6 +18,8 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import PhotoIcon from '@mui/icons-material/Photo';
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
@@ -46,13 +48,13 @@ export default function Profile() {
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
-      margin="90px 0 70px"
+      margin="90px 0 90px"
     >
       <Typography
         variant="h6"
         fontWeight="bold"
         margin="20px 10px"
-        padding="0 10px"
+        padding="0 20px"
       >
         Personal Info
       </Typography>
@@ -62,38 +64,41 @@ export default function Profile() {
         alignItems="center"
         alignContent="center"
         spacing={2}
-        padding="10px 20px"
+        padding="10px 30px"
       >
-        <Grid item xs={2}>
+        <Grid item xs={12} align="left">
           <Avatar
-            sx={{ width: 50, height: 50, border: 0.5, borderColor: "black" }}
+            sx={{ width: 100, height: 100, border: 0.5, borderColor: "black" }}
             variant="rounded"
             src="./profile1.png"
           ></Avatar>
+        </Grid>
+        <Grid item xs={2} marginTop="10px">
+          <PhotoCameraIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <Button
             variant="contained"
             size="small"
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px" }}
           >
-            Change
+            Change Photo
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <DriveFileRenameOutlineIcon />
+          <DriveFileRenameOutlineIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField id="Name" label="Name" fullWidth />
         </Grid>
         <Grid item xs={2}>
-          <EmailIcon />
+          <EmailIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <TextField id="email" label="Email" fullWidth />
         </Grid>
         <Grid item xs={2}>
-          <PasswordIcon />
+          <PasswordIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
           <FormControl variant="outlined" fullWidth>
@@ -125,7 +130,8 @@ export default function Profile() {
         justifyContent="center"
         alignItems="center"
         spacing={2}
-        padding="0px 20px"
+        padding="0px 30px"
+        marginTop="5px"
       >
         <Grid item xs={9} align="right">
           <Button
@@ -133,7 +139,7 @@ export default function Profile() {
             href="./"
             size="small"
             onClick={handleSave}
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px"}}
           >
             Save
           </Button>
@@ -143,7 +149,7 @@ export default function Profile() {
             variant="contained"
             href="./"
             size="small"
-            sx={{ padding: "8px 15px", marginTop: "10px" }}
+            sx={{ padding: "8px 15px"}}
           >
             Back
           </Button>
