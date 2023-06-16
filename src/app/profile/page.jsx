@@ -53,7 +53,7 @@ export default function Profile() {
       direction="column"
       margin="90px 0 90px"
     >
-      <Navbar/>
+      <Navbar />
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -81,7 +81,12 @@ export default function Profile() {
           <PhotoCameraIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
-          <Button variant="contained" size="small" sx={{ padding: "8px 15px" }}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ padding: "8px 15px" }}
+            color="success"
+          >
             Change Photo
           </Button>
         </Grid>
@@ -132,6 +137,7 @@ export default function Profile() {
           size="small"
           onClick={handleSave}
           sx={{ padding: "8px 15px" }}
+          color="success"
         >
           Save
         </Button>

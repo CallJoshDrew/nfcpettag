@@ -112,7 +112,12 @@ export default function AddMorePets() {
           />
         </Grid>
         <Grid item xs={10}>
-          <Button variant="contained" size="small" sx={{ padding: "8px 15px" }}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ padding: "8px 15px" }}
+            color="success"
+          >
             Add Photo
           </Button>
         </Grid>
@@ -190,6 +195,7 @@ export default function AddMorePets() {
             variant="contained"
             size="small"
             sx={{ padding: "8px 15px" }}
+            color="success"
             fullWidth
           >
             Copy url for NFC pet tag
@@ -215,6 +221,7 @@ export default function AddMorePets() {
           size="small"
           onClick={handleSave}
           sx={{ padding: "8px 15px" }}
+          color="success"
         >
           Save
         </Button>

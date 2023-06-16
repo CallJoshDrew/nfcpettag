@@ -14,6 +14,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import InfoIcon from "@mui/icons-material/Info";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,9 +27,9 @@ export default function Navbar() {
   };
 
   // const { currentUser, logout } = useAuth();
-  // const router = useRouter()
+  const router = useRouter();
   const handleLogout = async () => {
-    setTimeout(() => console.log("Logout"), 1000);
+    setTimeout(() => router.push(`/login`), 1000);
     // setTimeout(() => logout(), 1000);
     setOpenSnackbar(true);
   };
