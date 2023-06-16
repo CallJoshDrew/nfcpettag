@@ -16,6 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Footer from "../components/footer";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
@@ -25,6 +26,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 
 export default function Profile() {
+  const page = "profile"
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -165,6 +167,7 @@ export default function Profile() {
           You have successfully saved!
         </Alert>
       </Snackbar>
+      <Footer page={page} sx={{ zIndex: 100 }} />
     </Box>
   );
 }

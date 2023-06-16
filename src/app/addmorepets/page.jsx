@@ -17,6 +17,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
+import Footer from "../components/footer";
 import Avatar from "@mui/material/Avatar";
 import PetsIcon from "@mui/icons-material/Pets";
 import StarIcon from "@mui/icons-material/Star";
@@ -59,6 +61,7 @@ const spayed = [
 ];
 
 export default function AddMorePets() {
+  const page = "addmorepets"
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const vertical = "top";
   const horizontal = "center";
@@ -233,6 +236,8 @@ export default function AddMorePets() {
           </Button>
         </Grid>
       </Grid>
+
+      <Footer page={page} sx={{ zIndex: 100 }} />
     </Box>
   );
 }

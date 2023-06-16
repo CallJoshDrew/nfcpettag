@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Box, Grid, Typography } from "@mui/material";
 
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -7,10 +8,15 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import InfoIcon from "@mui/icons-material/Info";
+import Link from "next/link";
+export default function Footer({ page }) {
+  const router = useRouter();
 
-export default function Footer() {
-  const [value, setValue] = useState(0);
-  const [currentPage , setCurrentPage] = useState("Dashboard")
+  const [value, setValue] = useState(page);
+  const handleChange = (event, newValue) => {
+    router.push(`/${newValue}`);
+    setValue(newValue);
+  };
   return (
     <Box
       position="fixed"
@@ -33,14 +39,11 @@ export default function Footer() {
           backgroundColor: "#0E4B17",
         }}
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-          console.log(newValue);
-        }}
+        onChange={handleChange}
       >
         <BottomNavigationAction
           label="Dashboard"
-          href="./"
+          value="./"
           icon={
             <SpaceDashboardIcon
               style={{ color: "white" }}
@@ -53,18 +56,15 @@ export default function Footer() {
           }
         />
         <BottomNavigationAction
-          label="Profile"
-          href="./profile"
+        label="Profile" value="profile"
           icon={<AccountCircleIcon style={{ color: "white" }} />}
         />
         <BottomNavigationAction
-          label="Add More"
-          href="./addmorepets"
+        label="Add More" value="addmorepets"
           icon={<PetsIcon style={{ color: "white" }} />}
         />
         <BottomNavigationAction
-          label="About"
-          href="./about"
+        label="About" value="about"
           icon={<InfoIcon style={{ color: "white" }} />}
         />
       </BottomNavigation>

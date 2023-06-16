@@ -7,18 +7,19 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
-  CardActions,
+  CardActions,  
   Grid,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
-
+import Footer from "./components/footer";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
 export default function Home() {
+  const page = "./";
   return (
     <Box
       // height="100vh"
@@ -128,6 +129,7 @@ export default function Home() {
           </Grid>
         </Card>
       </Box>
+      <Footer page={page} sx={{ zIndex: 100 }} />
     </Box>
   );
 }
