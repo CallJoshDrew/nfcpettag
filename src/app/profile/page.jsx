@@ -20,13 +20,13 @@ import Footer from "../components/footer";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-import PhotoIcon from '@mui/icons-material/Photo';
+import PhotoIcon from "@mui/icons-material/Photo";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 
 export default function Profile() {
-  const page = "profile"
+  const page = "profile";
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -79,11 +79,7 @@ export default function Profile() {
           <PhotoCameraIcon fontSize="large" />
         </Grid>
         <Grid item xs={10}>
-          <Button
-            variant="contained"
-            size="small"
-            sx={{ padding: "8px 15px" }}
-          >
+          <Button variant="contained" size="small" sx={{ padding: "8px 15px" }}>
             Change Photo
           </Button>
         </Grid>
@@ -127,36 +123,17 @@ export default function Profile() {
           </FormControl>
         </Grid>
       </Grid>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        padding="0px 30px"
-        marginTop="5px"
-      >
-        <Grid item xs={9} align="right">
-          <Button
-            variant="contained"
-            href="./"
-            size="small"
-            onClick={handleSave}
-            sx={{ padding: "8px 15px"}}
-          >
-            Save
-          </Button>
-        </Grid>
-        <Grid item xs={3} align="left">
-          <Button
-            variant="contained"
-            href="./"
-            size="small"
-            sx={{ padding: "8px 15px"}}
-          >
-            Back
-          </Button>
-        </Grid>
-      </Grid>
+      <Box padding="0px 30px" marginTop="5px" align="right">
+        <Button
+          variant="contained"
+          href="./"
+          size="small"
+          onClick={handleSave}
+          sx={{ padding: "8px 15px" }}
+        >
+          Save
+        </Button>
+      </Box>
       <Snackbar
         open={openSnackbar}
         autoHideDuration={1000}

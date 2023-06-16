@@ -206,37 +206,17 @@ export default function AddMorePets() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        padding="0px 30px"
-        marginTop="5px"
-      >
-        <Grid item xs={9} align="right">
-          <Button
-            variant="contained"
-            href="./"
-            size="small"
-            onClick={handleSave}
-            sx={{ padding: "8px 15px" }}
-          >
-            Save
-          </Button>
-        </Grid>
-        <Grid item xs={3} align="left">
-          <Button
-            variant="contained"
-            href="./"
-            size="small"
-            sx={{ padding: "8px 15px" }}
-          >
-            Back
-          </Button>
-        </Grid>
-      </Grid>
-
+      <Box padding="0px 30px" marginTop="5px" align="right">
+        <Button
+          variant="contained"
+          href="./"
+          size="small"
+          onClick={handleSave}
+          sx={{ padding: "8px 15px" }}
+        >
+          Save
+        </Button>
+      </Box>
       <Footer page={page} sx={{ zIndex: 100 }} />
     </Box>
   );
