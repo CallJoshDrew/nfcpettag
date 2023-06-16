@@ -13,12 +13,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Footer from "./components/Footer";
+import Footer from "./components/FooterBar";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/HeaderNav";
 export default function Home() {
   const page = "./";
   return (

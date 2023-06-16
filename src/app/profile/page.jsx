@@ -16,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Footer from "../components/Footer";
+import Footer from "../components/FooterBar";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
@@ -24,7 +24,7 @@ import PhotoIcon from "@mui/icons-material/Photo";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/HeaderNav";
 
 export default function Profile() {
   const page = "profile";

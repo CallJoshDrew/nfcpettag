@@ -16,8 +16,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "../components/FooterBar";
+import Navbar from "../components/HeaderNav";
 
 export default function About() {
   const page="about";

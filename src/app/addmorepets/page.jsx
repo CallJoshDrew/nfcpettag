@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Footer from "../components/Footer";
+import Footer from "../components/FooterBar";
 import Avatar from "@mui/material/Avatar";
 import PetsIcon from "@mui/icons-material/Pets";
 import StarIcon from "@mui/icons-material/Star";
@@ -27,7 +27,7 @@ import CakeIcon from "@mui/icons-material/Cake";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LinkIcon from "@mui/icons-material/Link";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/HeaderNav";
 
 const species = [
   {
