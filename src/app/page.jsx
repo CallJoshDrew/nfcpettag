@@ -13,11 +13,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
+import Navbar from "./components/Navbar";
 export default function Home() {
   const page = "./";
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       direction="column"
       margin="90px 0 90px"
     >
+      <Navbar />
       <Typography variant="h6" fontWeight="bold" margin="20px 10px" padding="0 10px">
         Dashboard
       </Typography>

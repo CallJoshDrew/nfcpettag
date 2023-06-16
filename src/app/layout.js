@@ -1,7 +1,6 @@
 "use client";
 
 import "./globals.css";
-import Navbar from "./components/navbar.jsx";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 
 export default function RootLayout({ children }) {
@@ -13,7 +12,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
         <CssBaseline />
-        <body><Navbar />{children}</body>
+        <body>{children}</body>
     </html>
   );
 }

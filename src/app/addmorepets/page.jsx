@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import Avatar from "@mui/material/Avatar";
 import PetsIcon from "@mui/icons-material/Pets";
 import StarIcon from "@mui/icons-material/Star";
@@ -27,6 +27,7 @@ import CakeIcon from "@mui/icons-material/Cake";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LinkIcon from "@mui/icons-material/Link";
+import Navbar from "../components/Navbar";
 
 const species = [
   {
@@ -61,7 +62,7 @@ const spayed = [
 ];
 
 export default function AddMorePets() {
-  const page = "addmorepets"
+  const page = "addmorepets";
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const vertical = "top";
   const horizontal = "center";
@@ -80,6 +81,7 @@ export default function AddMorePets() {
       direction="column"
       margin="90px 0 90px"
     >
+      <Navbar />
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -105,7 +107,7 @@ export default function AddMorePets() {
         </Grid>
         <Grid item xs={2}>
           <Avatar
-            sx={{ width: 33, height: 33, backgroundColor:"black" }}
+            sx={{ width: 33, height: 33, backgroundColor: "black" }}
             variant="rounded"
           />
         </Grid>

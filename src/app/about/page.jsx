@@ -16,7 +16,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function About() {
   const page="about";
@@ -27,6 +28,7 @@ export default function About() {
       direction="column"
       margin="90px 0 90px"
     >
+      <Navbar />
       <Typography
         variant="h6"
         fontWeight="bold"

@@ -85,6 +85,7 @@ export default function Navbar() {
         <MenuItem sx={{ width: "160px" }}>
           <Link
             href="/profile"
+            as="/profile"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Box display="flex" alignItems="center" alignContent="center">
@@ -99,6 +100,7 @@ export default function Navbar() {
         <MenuItem>
           <Link
             href="/addmorepets"
+            as="/addmorepets"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Box display="flex" alignItems="center" alignContent="center">
@@ -112,6 +114,7 @@ export default function Navbar() {
         <MenuItem>
           <Link
             href="/about"
+            as="/about"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Box display="flex" alignItems="center" alignContent="center">
