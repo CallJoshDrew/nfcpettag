@@ -17,7 +17,7 @@ export default function Loading() {
         >
           <CircularProgress />
         </Fade>
-        <Typography fontWeight="bold">Loading..</Typography>
+        <Typography fontWeight="bold" color="#2e7d32">Loading..</Typography>
       </Box>
     </Box>
   );
