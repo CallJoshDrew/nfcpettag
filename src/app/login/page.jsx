@@ -12,6 +12,7 @@ import {
   CardContent,
   CardMedia,
   Paper,
+  CardActions,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +36,7 @@ export default function Login() {
 
   return (
     <Box alignItems="center" justifyContent="flex-start" direction="column">
-      <CardMedia component="img" height="300" image="/cat.jpg" alt="Dog" />
+      <CardMedia component="img" height="240" image="/cat.jpg" alt="Dog" />
 
       {/* <Typography
         gutterBottom
@@ -61,7 +62,7 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item>
-              <Typography variant="h7" padding="0px 25px">
+              <Typography variant="h7" padding="0px 25px" color="#2e7d32" fontWeight="bold">
                 Member Login
               </Typography>
             </Grid>
@@ -105,29 +106,58 @@ export default function Login() {
           </Grid>
         </form>
       </Box>
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        padding="0 40px"
-        marginBottom="20px"
-      >
-        <Grid item>
-          <Typography variant="h7">New Member? </Typography>
+      <Box padding="0 40px" marginBottom="20px">
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          padding="10px 0"
+        >
+          <Grid item xs={6} padding="0px 5px">
+            <Typography variant="h7" color="red">
+              New Member?
+            </Typography>
+          </Grid>
+          <Grid item xs={6} align="right" padding="0px 5px">
+            <Link
+              href="/"
+              as="/"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <Button variant="outlined" color="success" size="small">
+                Register
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Link
-            href="/"
-            as="/"
-            style={{ textDecoration: "none", color: "black" }}
+        <Card>
+          <Grid
+            container
+            justifyContent="flex-start"
+            alignItems="center"
+            spacing={2}
+            padding="10px 15px"
           >
-            <Button variant="outlined" color="success" size="small">
-              Register
-            </Button>
-          </Link>
-        </Grid>
-      </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body1" color="text.secondary">
+                After purchased your first NFC Pet Tag, please register to use
+                it.
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image="/mypet.jpg"
+                  alt="New Member Registeration"
+                  sx={{ borderRadius: "5px" }}
+                />
+              </CardActionArea>
+            </Grid>
+          </Grid>
+        </Card>
+      </Box>
     </Box>
   );
 }
