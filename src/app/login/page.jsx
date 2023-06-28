@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-
 export default function Login() {
   const {
     handleSubmit,
@@ -47,15 +46,15 @@ export default function Login() {
       >
         NFC PET TAG
       </Typography> */}
-      <Box backgroundColor="#0E4B17" align="center" padding="5px 0px">
+      <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="white">
           "Lost Pet? How to return to it's owner?"
         </Typography>
       </Box>
       <Paper>
         <Typography variant="body1" align="center" padding="10px 15px">
-          With our NFC Pet Tag, now you can find the info of the lost pet
-          easily. Just tag, call and return to it' rightful owner!
+          With our NFC Pet Tag, now you can find the pet's info
+          easily. Just tag & call!
         </Typography>
       </Paper>
       <Box padding="20px">
@@ -120,8 +119,8 @@ export default function Login() {
           </Grid>
           <Grid item xs={6} align="right" padding="0px 5px">
             <Link
-              href="/"
-              as="/"
+              href="/register"
+              as="/register"
               style={{ textDecoration: "none", color: "black" }}
             >
               <Button variant="outlined" color="success" size="small">

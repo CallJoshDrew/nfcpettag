@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Alert,
@@ -63,6 +63,7 @@ const spayed = [
 
 export default function AddMorePets() {
   const page = "addmorepets";
+  const [snackMsg, setSnackMsg] = useState(null);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const vertical = "top";
   const horizontal = "center";
@@ -70,7 +71,13 @@ export default function AddMorePets() {
   const handleClosebar = () => {
     setOpenSnackbar(false);
   };
+  const handleCopy = async () => {
+    setSnackMsg("You have copied the URL!")
+    setTimeout(() => console.log("Saved"), 1000);
+    setOpenSnackbar(true);
+  };
   const handleSave = async () => {
+    setSnackMsg("You have successfully saved!")
     setTimeout(() => console.log("Saved"), 1000);
     setOpenSnackbar(true);
   };
@@ -195,6 +202,7 @@ export default function AddMorePets() {
             variant="contained"
             size="small"
             sx={{ padding: "8px 15px" }}
+            onClick={handleCopy}
             color="success"
             fullWidth
           >
@@ -217,7 +225,6 @@ export default function AddMorePets() {
       <Box padding="0px 30px" marginTop="5px" align="right">
         <Button
           variant="contained"
-          href="./"
           size="small"
           onClick={handleSave}
           sx={{ padding: "8px 15px" }}
@@ -226,6 +233,16 @@ export default function AddMorePets() {
           Save
         </Button>
       </Box>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={handleClosebar}
+        anchorOrigin={{ vertical, horizontal }}
+      >
+        <Alert severity="success" sx={{ width: "100%" }}>
+          {snackMsg}
+        </Alert>
+      </Snackbar>
       <Footer page={page} sx={{ zIndex: 100 }} />
     </Box>
   );

@@ -19,8 +19,10 @@ import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
 import Navbar from "./components/HeaderNav";
+import { useRouter } from "next/navigation";
 export default function Home() {
   const page = "./";
+  const router = useRouter();
   return (
     <Box
       // height="100vh"
@@ -86,7 +88,7 @@ export default function Home() {
             <Button
               variant="contained"
               color="success"
-              href="./mypets/chloe"
+              onClick={() => { setTimeout(() => router.push(`//mypets/chloe`), 1000); }}
               size="small"
               startIcon={<EditIcon />}
               sx={{ padding: "8px 15px" }}

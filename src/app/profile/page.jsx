@@ -133,7 +133,6 @@ export default function Profile() {
       <Box padding="0px 30px" marginTop="5px" align="right">
         <Button
           variant="contained"
-          href="./"
           size="small"
           onClick={handleSave}
           sx={{ padding: "8px 15px" }}
