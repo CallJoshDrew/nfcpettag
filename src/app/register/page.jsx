@@ -14,12 +14,29 @@ import {
   CardActions,
 } from "@mui/material";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import {auth} from "../../../FirebaseConfig"
-
+import { useEffect, useState } from "react";
 export default function Register() {
+  const [isClient, setIsClient] = useState(false);
+  const [auth, setAuth] = useState(null);
+
+  useEffect(() => {
+    setIsClient(true);
+    setAuth(require("../../../FirebaseConfig").auth);
+  }, []);
+
   const handleGoogle = (e) => {
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth,provider);
+    if (isClient) {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // Handle the successful sign-in
+          console.log("Signed in successfully:", result.user);
+        })
+        .catch((error) => {
+          // Handle errors during sign-in
+          console.error("Error signing in with Google:", error);
+        });
+    }
   };
   const handleApple = (e) => {};
 
