@@ -7,8 +7,8 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import InfoIcon from "@mui/icons-material/Info";
-import Link from "next/link";
+import HomeIcon from '@mui/icons-material/Home';
+
 export default function Footer({ page }) {
   const router = useRouter();
 
@@ -42,8 +42,22 @@ export default function Footer({ page }) {
         onChange={handleChange}
       >
         <BottomNavigationAction
-          label="Dashboard"
+          label="Home"
           value="./"
+          icon={
+            <HomeIcon
+              style={{ color: "white" }}
+              sx={{
+                "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
+                  color: "#007A78",
+                },
+              }}
+            />
+          }
+        />  
+        <BottomNavigationAction
+          label="Dashboard"
+          value="./dashboard"
           icon={
             <SpaceDashboardIcon
               style={{ color: "white" }}
@@ -56,16 +70,12 @@ export default function Footer({ page }) {
           }
         />
         <BottomNavigationAction
-        label="Profile" value="profile"
-          icon={<AccountCircleIcon style={{ color: "white" }} />}
-        />
-        <BottomNavigationAction
-        label="Add More" value="addmorepets"
+        label="Add More" value="./dashboard/addmorepets"
           icon={<PetsIcon style={{ color: "white" }} />}
         />
         <BottomNavigationAction
-        label="About" value="about"
-          icon={<InfoIcon style={{ color: "white" }} />}
+        label="Profile" value="./dashboard/profile"
+          icon={<AccountCircleIcon style={{ color: "white" }} />}
         />
       </BottomNavigation>
     </Box>

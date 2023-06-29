@@ -16,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Footer from "../components/FooterBar";
+import Footer from "../../components/FooterBar";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
@@ -24,10 +24,9 @@ import PhotoIcon from "@mui/icons-material/Photo";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
-import Navbar from "../components/HeaderNav";
 
 export default function Profile() {
-  const page = "profile";
+  const page = "./dashboard/profile";
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -53,7 +52,6 @@ export default function Profile() {
       direction="column"
       margin="90px 0 90px"
     >
-      <Navbar />
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -74,7 +72,7 @@ export default function Profile() {
           <Avatar
             sx={{ width: 100, height: 100, border: 0.5, borderColor: "black" }}
             variant="rounded"
-            src="./profile1.png"
+            src="../profile1.png"
           ></Avatar>
         </Grid>
         <Grid item xs={2} marginTop="10px">

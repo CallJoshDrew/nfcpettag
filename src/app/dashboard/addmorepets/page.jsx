@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Footer from "../components/FooterBar";
+import Footer from "../../components/FooterBar";
 import Avatar from "@mui/material/Avatar";
 import PetsIcon from "@mui/icons-material/Pets";
 import StarIcon from "@mui/icons-material/Star";
@@ -27,7 +27,6 @@ import CakeIcon from "@mui/icons-material/Cake";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LinkIcon from "@mui/icons-material/Link";
-import Navbar from "../components/HeaderNav";
 
 const species = [
   {
@@ -62,7 +61,7 @@ const spayed = [
 ];
 
 export default function AddMorePets() {
-  const page = "addmorepets";
+  const page = "./dashboard/addmorepets";
   const [snackMsg, setSnackMsg] = useState(null);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const vertical = "top";
@@ -87,8 +86,7 @@ export default function AddMorePets() {
       justifyContent="flex-start"
       direction="column"
       margin="90px 0 90px"
-    >
-      <Navbar />
+    > 
       <Typography
         variant="h6"
         fontWeight="bold"

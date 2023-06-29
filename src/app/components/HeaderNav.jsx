@@ -12,7 +12,8 @@ import Logout from "@mui/icons-material/Logout";
 import { Alert, Grid, Snackbar, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
-import InfoIcon from "@mui/icons-material/Info";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import HomeIcon from '@mui/icons-material/Home';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -69,7 +70,7 @@ export default function Navbar() {
                   border: 0.5,
                   borderColor: "white",
                 }}
-                src="./profile1.png"
+                src="../profile.png"
               ></Avatar>
             </IconButton>
           </Tooltip>
@@ -85,8 +86,8 @@ export default function Navbar() {
       >
         <MenuItem sx={{ width: "160px" }}>
           <Link
-            href="/profile"
-            as="/profile"
+            href="/dashboard/profile"
+            as="/dashboard/profile"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Box display="flex" alignItems="center" alignContent="center">
@@ -100,8 +101,36 @@ export default function Navbar() {
         <Divider />
         <MenuItem>
           <Link
-            href="/addmorepets"
-            as="/addmorepets"
+            href="/"
+            as="/"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Box display="flex" alignItems="center" alignContent="center">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <Typography marginLeft="5px">Home</Typography>
+            </Box>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+            href="/dashboard"
+            as="/dashboard"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Box display="flex" alignItems="center" alignContent="center">
+              <ListItemIcon>
+                <SpaceDashboardIcon />
+              </ListItemIcon>
+              <Typography marginLeft="5px">Dashboard</Typography>
+            </Box>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+            href="/dashboard/addmorepets"
+            as="/dashboard/addmorepets"
             style={{ textDecoration: "none", color: "black" }}
           >
             <Box display="flex" alignItems="center" alignContent="center">
@@ -109,20 +138,6 @@ export default function Navbar() {
                 <PetsIcon />
               </ListItemIcon>
               <Typography marginLeft="5px">Add More</Typography>
-            </Box>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link
-            href="/about"
-            as="/about"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <Box display="flex" alignItems="center" alignContent="center">
-              <ListItemIcon>
-                <InfoIcon />
-              </ListItemIcon>
-              <Typography marginLeft="5px">About Us</Typography>
             </Box>
           </Link>
         </MenuItem>
