@@ -30,7 +30,7 @@ export default function HeaderNav() {
   // const { currentUser, logout } = useAuth();
   const router = useRouter();
   const handleLogout = async () => {
-    setTimeout(() => router.push(`/login`), 1000);
+    setTimeout(() => router.push(`/`), 1000);
     // setTimeout(() => logout(), 1000);
     setOpenSnackbar(true);
   };

@@ -34,7 +34,7 @@ export default function Register() {
   }, []);
   const router = useRouter();
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const vertical = "bottom";
+  const vertical = "top";
   const horizontal = "center";
 
   const handleClosebar = () => {
@@ -48,7 +48,7 @@ export default function Register() {
           // Handle the successful sign-in
           console.log("Signed in successfully:", result.user);
           setSnackMsg("Signed in successfully!")
-          setTimeout(() => router.push(`/`), 1000);
+          setTimeout(() => router.push(`/dashboard`), 2000);
           setOpenSnackbar(true);
         })
         .catch((error) => {
@@ -146,7 +146,7 @@ export default function Register() {
       </Box>
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={1000}
+        autoHideDuration={3000}
         onClose={handleClosebar}
         anchorOrigin={{ vertical, horizontal }}
       >
