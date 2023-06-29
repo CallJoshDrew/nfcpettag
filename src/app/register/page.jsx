@@ -13,8 +13,13 @@ import {
   Paper,
   CardActions,
 } from "@mui/material";
+import GoogleIcon from "@mui/icons-material/Google";
+import AppleIcon from "@mui/icons-material/Apple";
+
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
+
+import { useForm } from "react-hook-form";
 export default function Register() {
   const [isClient, setIsClient] = useState(false);
   const [auth, setAuth] = useState(null);
@@ -39,9 +44,23 @@ export default function Register() {
     }
   };
   const handleApple = (e) => {};
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    control,
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <Box alignItems="center" justifyContent="flex-start" direction="column">
+    <Box>
       <CardMedia
         component="img"
         height="240"
@@ -55,91 +74,61 @@ export default function Register() {
       </Box>
       <Paper>
         <Typography variant="body1" align="center" padding="10px 15px">
-          Please register/sign in to use our services. <br />
+          Please sign in/register to use our services. <br />
           All terms and conditions applied.
         </Typography>
       </Paper>
-      <Box padding="20px">
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={2}
-        >
-          <Grid item>
-            <Typography variant="h7" color="#2e7d32" fontWeight="bold">
-              New Member
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            item
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1.5}
+      <Box padding="20px 50px">
+        <Stack spacing={1}>
+          <Typography
+            align="center"
+            variant="h7"
+            color="#2e7d32"
+            fontWeight="bold"
           >
-            <Grid item>
-              <Button variant="contained" onClick={handleGoogle}>
-                Sign in with Google Account
+            New Member
+          </Typography>
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={handleGoogle}
+            startIcon={<GoogleIcon fontSize="small" />}
+            size="large"
+          >
+            Sign in with Google
+          </Button>
+          <Typography align="center" color="grey">
+            or
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <TextField
+              fullWidth
+              size="small"
+              sx={{marginBottom:"10px"}}
+              label="Your Email"
+              type="email"
+              {...register("email", { required: "Email is required" })}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+            />
+            <TextField
+              fullWidth
+              size="small"
+              sx={{marginBottom:"10px"}}
+              label="Your Password"
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+              })}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+            <Button fullWidth type="submit" variant="contained" color="success">
+                Register
               </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="contained" color="error" onClick={handleApple}>
-                Sign in with Apple Account/ID
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
+          </form>
+        </Stack>
       </Box>
     </Box>
   );
 }
-
-// <Grid
-//   container
-//   justifyContent="center"
-//   alignItems="center"
-//   alignContent="center"
-//   spacing={2}
-//   padding="10px 20px"
-// >
-//   <Grid item xs={12}>
-//     <TextField
-//       fullWidth
-//       label="Your Email"
-//       type="email"
-//       {...register("confirm_password", {
-//         required: true,
-//         validate: (val) => {
-//           if (watch("password") != val) {
-//             return "Your passwords do no match";
-//           }
-//         },
-//       })}
-//     />
-//   </Grid>
-//   <Grid item xs={12}>
-//     <TextField
-//       fullWidth
-//       label="Your Password"
-//       type="password"
-//       {...register("password", {
-//         required: "Password is required",
-//       })}
-//       error={!!errors.password}
-//       helperText={errors.password?.message}
-//     />
-//   </Grid>
-//   <Grid item xs={12}>
-//     <TextField
-//       fullWidth
-//       label="Confirm Password"
-//       type="password"
-//       {...register("email", { required: "Password is required" })}
-//       error={!!errors.password}
-//       helperText={errors.password?.message}
-//     />
-//   </Grid>
-// </Grid>;

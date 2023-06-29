@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 export default function Login() {
   const {
     handleSubmit,
@@ -32,7 +33,10 @@ export default function Login() {
   const onSubmit = (data) => {
     console.log(data);
   };
-
+  const router = useRouter();
+  const handleRegister = () => {
+    router.push(`/register`);
+  };
   return (
     <Box alignItems="center" justifyContent="flex-start" direction="column">
       <CardMedia component="img" height="240" image="/cat.jpg" alt="Dog" />
@@ -53,15 +57,20 @@ export default function Login() {
       </Box>
       <Paper>
         <Typography variant="body1" align="center" padding="10px 15px">
-          With our NFC Pet Tag, now you can find the pet's info
-          easily. Just tag & call!
+          With our NFC Pet Tag, now you can find the pet's info easily. Just tag
+          & call!
         </Typography>
       </Paper>
       <Box padding="20px">
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item>
-              <Typography variant="h7" padding="0px 25px" color="#2e7d32" fontWeight="bold">
+              <Typography
+                variant="h7"
+                padding="0px 25px"
+                color="#2e7d32"
+                fontWeight="bold"
+              >
                 Member Login
               </Typography>
             </Grid>
@@ -112,12 +121,12 @@ export default function Login() {
           alignItems="center"
           padding="10px 0"
         >
-          <Grid item xs={6} padding="0px 5px">
+          <Grid item xs={8} padding="0px 5px">
             <Typography variant="h7" color="red">
-              New Member?
+              Not yet a member?
             </Typography>
           </Grid>
-          <Grid item xs={6} align="right" padding="0px 5px">
+          <Grid item xs={4} align="right" padding="0px 5px">
             <Link
               href="/register"
               as="/register"
@@ -129,7 +138,7 @@ export default function Login() {
             </Link>
           </Grid>
         </Grid>
-        <Card>
+        <Card onClick={handleRegister}>
           <Grid
             container
             justifyContent="flex-start"
