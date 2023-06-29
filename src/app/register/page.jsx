@@ -12,34 +12,50 @@ import {
   CardMedia,
   Paper,
   CardActions,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 export default function Register() {
   const [isClient, setIsClient] = useState(false);
   const [auth, setAuth] = useState(null);
+  const [snackMsg, setSnackMsg] = useState(null);
 
   useEffect(() => {
     setIsClient(true);
     setAuth(require("../../../FirebaseConfig").auth);
   }, []);
+  const router = useRouter();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const vertical = "bottom";
+  const horizontal = "center";
 
+  const handleClosebar = () => {
+    setOpenSnackbar(false);
+  };
   const handleGoogle = (e) => {
     if (isClient) {
       const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
+      signInWithRedirect(auth, provider)
         .then((result) => {
           // Handle the successful sign-in
           console.log("Signed in successfully:", result.user);
+          setSnackMsg("Signed in successfully!")
+          setTimeout(() => router.push(`/`), 1000);
+          setOpenSnackbar(true);
         })
         .catch((error) => {
           // Handle errors during sign-in
           console.error("Error signing in with Google:", error);
+          setSnackMsg("Error signing in with Google!")
+          setOpenSnackbar(true);
         });
     }
   };
@@ -55,9 +71,9 @@ export default function Register() {
       password: "",
     },
   });
-
+  
   const onSubmit = (data) => {
-    console.log(data);
+   
   };
   return (
     <Box>
@@ -129,6 +145,16 @@ export default function Register() {
           </form>
         </Stack>
       </Box>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={handleClosebar}
+        anchorOrigin={{ vertical, horizontal }}
+      >
+        <Alert severity="success" sx={{ width: "100%" }}>
+          {snackMsg}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
