@@ -38,27 +38,21 @@ export default function Login() {
     router.push(`/register`);
   };
   return (
-    <Box alignItems="center" justifyContent="flex-start" direction="column">
+    <Box>
+      <Box backgroundColor="white" align="center" padding="10px 0px">
+        <Typography variant="h7" fontWeight="bold" color="#0E4B17">
+          "Lost Pet? What to do?"
+        </Typography>
+      </Box>
       <CardMedia component="img" height="240" image="/cat.jpg" alt="Dog" />
-
-      {/* <Typography
-        gutterBottom
-        variant="h4"
-        fontWeight="bold"
-        align="center"
-        padding="15px 0 0 "
-      >
-        NFC PET TAG
-      </Typography> */}
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="white">
-          "Lost Pet? How to return to it's owner?"
+          No Worries. Just tag & call!
         </Typography>
       </Box>
       <Paper>
-        <Typography variant="body1" align="center" padding="10px 15px">
-          With our NFC Pet Tag, now you can find the pet's info easily. Just tag
-          & call!
+        <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
+            NFC Pet Tag helps you recover your pet easily!
         </Typography>
       </Paper>
       <Box padding="20px">

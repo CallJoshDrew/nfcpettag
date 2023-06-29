@@ -73,7 +73,7 @@ export default function Register() {
         </Typography>
       </Box>
       <Paper>
-        <Typography variant="body1" align="center" padding="10px 15px">
+        <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
           Please sign in/register to use our services. <br />
           All terms and conditions applied.
         </Typography>
