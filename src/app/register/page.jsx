@@ -18,7 +18,7 @@ import {
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
@@ -43,7 +43,7 @@ export default function Register() {
   const handleGoogle = (e) => {
     if (isClient) {
       const provider = new GoogleAuthProvider();
-      signInWithRedirect(auth, provider)
+      signInWithPopup(auth, provider)
         .then((result) => {
           // Handle the successful sign-in
           console.log("Signed in successfully:", result.user);
