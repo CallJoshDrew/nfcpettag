@@ -17,7 +17,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function Navbar() {
+export default function HeaderNav() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleIconClick = (event) => {

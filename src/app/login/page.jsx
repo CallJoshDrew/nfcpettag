@@ -39,20 +39,21 @@ export default function Login() {
   };
   return (
     <Box>
-      <Box backgroundColor="white" align="center" padding="10px 0px">
-        <Typography variant="h7" fontWeight="bold" color="#0E4B17">
-          "Lost Pet? What to do?"
-        </Typography>
-      </Box>
-      <CardMedia component="img" height="240" image="/cat.jpg" alt="Dog" />
+      <CardMedia
+        component="img"
+        height="240"
+        image="/login.jpg"
+        alt="login"
+      />
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="white">
-          No Worries. Just tag & call!
+          It's not my attitude. It's my style.
         </Typography>
       </Box>
       <Paper>
         <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
-            NFC Pet Tag helps you recover your pet easily!
+          Please log in/register to use our services. <br />
+          All terms and conditions applied.
         </Typography>
       </Paper>
       <Box padding="20px">

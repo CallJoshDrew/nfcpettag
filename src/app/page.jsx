@@ -10,6 +10,7 @@ import {
   Stack,
   CardMedia,
   Typography,
+  Avatar,
 } from "@mui/material";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
@@ -24,10 +25,49 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const page = "./";
   const router = useRouter();
+  const handleSignIn = () => {
+    router.push(`/login`);
+  };
   return (
     <Box>
-      <Box backgroundColor="black" align="center" padding="10px 0px">
-        <Typography variant="h7" fontWeight="bold" color="white">
+      <Grid
+        container
+        justifyContent="space-between"
+        alignItems="center"
+        padding="10px"
+        backgroundColor="#0E4B17"
+      >
+        <Grid item xs={1.5}>
+          <Avatar
+            variant="square"
+            sx={{
+              width: 30,
+              height: 30,
+              border: 0.5,
+              borderColor: "black",
+              borderRadius: "5px",
+            }}
+            src="./antiochwave.png"
+          ></Avatar>
+        </Grid>
+        <Grid item xs={8}>
+          <Typography variant="h6" color="white">
+            NFC PET TAG
+          </Typography>
+        </Grid>
+        <Grid item xs={2.5}>
+          <Button
+            onClick={handleSignIn}
+            variant="contained"
+            color="success"
+            size="small"
+          >
+            Sign In
+          </Button>
+        </Grid>
+      </Grid>
+      <Box backgroundColor="white" align="center" padding="10px 0px">
+        <Typography variant="h7" fontWeight="bold" color="#0E4B17">
           "Help! I'm lost?"
         </Typography>
       </Box>
@@ -80,27 +120,53 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="success" fontWeight="bold">
-              Discover Our Smart Tags!
+            <Button
+              fullWidth
+              variant="contained"
+              color="success"
+              fontWeight="bold"
+            >
+              Discover Our Latest Smart Tag
             </Button>
           </Grid>
         </Grid>
       </Box>
-      <Card >
-        <CardContent sx={{ margin:"auto", width: "100%" }}>
-        <CardMedia
-          component="iframe"
-          height="200px"
-          autoPlay
-          controls
-          image="https://www.youtube.com/embed/3VfxVRQlPP4"
-        /></CardContent>
-        <CardContent>
-          <Typography align="center" variant="body2" color="textSecondary" component="p">
-            How to Use?
-          </Typography>
-        </CardContent>
-      </Card>
+      <Box backgroundColor="white" align="center" padding="30px 25px">
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          spacing={1.5}
+        >
+          <Grid item xs={12}>
+            <CardMedia
+              component="iframe"
+              height="200px"
+              autoPlay
+              controls
+              image="https://www.youtube.com/embed/3VfxVRQlPP4"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body1" color="#0E4B17" fontWeight="bold">
+              Above video will show how to use our NFC Pet Tag and services.{" "}
+              <br />
+              For more info, please check our FAQ
+              section below.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="success"
+              fontWeight="bold"
+            >
+              FAQ Section
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
     </Box>
   );
 }

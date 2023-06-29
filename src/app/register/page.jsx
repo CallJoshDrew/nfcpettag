@@ -85,13 +85,12 @@ export default function Register() {
       />
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="white">
-          Welcome to Our Communities!
+          Welcome to Our Community
         </Typography>
       </Box>
       <Paper>
         <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
-          Please sign in/register to use our services. <br />
-          All terms and conditions applied.
+          Knowledge is power, community is strength and positive attitude is everything.
         </Typography>
       </Paper>
       <Box padding="20px 50px">
