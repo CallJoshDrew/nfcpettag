@@ -47,14 +47,14 @@ export default function Register() {
         .then((result) => {
           // Handle the successful sign-in
           console.log("Signed in successfully:", result.user);
-          setSnackMsg("Signed in successfully!")
+          setSnackMsg("Signed in successfully!");
           setTimeout(() => router.push(`/dashboard`), 2000);
           setOpenSnackbar(true);
         })
         .catch((error) => {
           // Handle errors during sign-in
           console.error("Error signing in with Google:", error);
-          setSnackMsg("Error signing in with Google!")
+          setSnackMsg("Error signing in with Google!");
           setOpenSnackbar(true);
         });
     }
@@ -71,10 +71,8 @@ export default function Register() {
       password: "",
     },
   });
-  
-  const onSubmit = (data) => {
-   
-  };
+
+  const onSubmit = (data) => {};
   return (
     <Box>
       <CardMedia
@@ -89,8 +87,14 @@ export default function Register() {
         </Typography>
       </Box>
       <Paper>
-        <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
-          Knowledge is power, community is strength and positive attitude is everything.
+        <Typography
+          variant="body1"
+          align="center"
+          padding="10px 15px"
+          color="#0E4B17"
+        >
+          Knowledge is power, community is strength and positive attitude is
+          everything.
         </Typography>
       </Paper>
       <Box padding="20px 50px">
@@ -110,7 +114,7 @@ export default function Register() {
             startIcon={<GoogleIcon fontSize="small" />}
             size="large"
           >
-            Sign in with Google
+            Sign Up with Google
           </Button>
           <Typography align="center" color="grey">
             or
@@ -119,17 +123,17 @@ export default function Register() {
             <TextField
               fullWidth
               size="small"
-              sx={{marginBottom:"10px"}}
+              sx={{ marginBottom: "10px" }}
               label="Your Email"
               type="email"
               {...register("email", { required: "Email is required" })}
-                error={!!errors.email}
-                helperText={errors.email?.message}
+              error={!!errors.email}
+              helperText={errors.email?.message}
             />
             <TextField
               fullWidth
               size="small"
-              sx={{marginBottom:"10px"}}
+              sx={{ marginBottom: "10px" }}
               label="Your Password"
               type="password"
               {...register("password", {
@@ -139,8 +143,8 @@ export default function Register() {
               helperText={errors.password?.message}
             />
             <Button fullWidth type="submit" variant="contained" color="success">
-                Register
-              </Button>
+              Register
+            </Button>
           </form>
         </Stack>
       </Box>
