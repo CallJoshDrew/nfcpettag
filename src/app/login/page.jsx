@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import {
   TextField,
   Button,
@@ -61,7 +62,7 @@ export default function Login() {
         });
     }
   };
-  const handleApple = (e) => {};
+
   const {
     handleSubmit,
     register,

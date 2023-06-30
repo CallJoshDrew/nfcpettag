@@ -1,11 +1,16 @@
 'use client'
-import React from 'react'
+import React, {useContext}from 'react'
 import { Box, Typography } from '@mui/material'
 import { useRouter } from "next/navigation";
 import { useSearchParams } from 'next/navigation';
-
+import { authContext } from "../../../lib/store/authContext"
+import Login from "../../../login/page.jsx"
 export default function MyPet() {
+  const { user } = useContext(authContext);
   const router = useRouter();
+  if (!user) {
+    return <Login />;
+  } 
   return (
     <Box
     alignItems="center"

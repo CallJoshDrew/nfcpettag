@@ -25,7 +25,9 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 
+import { authContext } from "../../lib/store/authContext";
 export default function Profile() {
+  const { user } = React.useContext(authContext);
   const page = "./dashboard/profile";
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -72,7 +74,7 @@ export default function Profile() {
           <Avatar
             sx={{ width: 100, height: 100, border: 0.5, borderColor: "black" }}
             variant="rounded"
-            src="../profile1.png"
+            src={user?.photoURL}
           ></Avatar>
         </Grid>
         <Grid item xs={2} marginTop="10px">

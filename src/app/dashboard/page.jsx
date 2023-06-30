@@ -19,9 +19,16 @@ import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
 import { useRouter } from "next/navigation";
-export default function Dashboard() {
+import { useContext, useEffect, useState } from "react";
+import { authContext } from "../lib/store/authContext";
+import Login from '../login/page.jsx'
+export default function Dashboard() { 
   const page = "./dashboard";
   const router = useRouter();
+  const { user } = useContext(authContext);
+  if (!user) {
+    return <Login />;
+  } 
   return (
     <Box
       // height="100vh"
@@ -36,7 +43,7 @@ export default function Dashboard() {
         margin="20px 10px"
         padding="0 20px"
       >
-        Dashboard
+        Welcome {user?.displayName}
       </Typography>
       <Box
         display="flex"

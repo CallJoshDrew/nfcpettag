@@ -1,12 +1,15 @@
 'use client'
 import HeaderNav from '../components/HeaderNav'
- 
+import AuthContextProvider from '../lib/store/authContext.jsx'
+
 export default function Layout({ children }) {
  
   return (
     <>
-      <HeaderNav />
-      <main>{children}</main>
+      <AuthContextProvider>
+        <HeaderNav />
+        <main>{children}</main>
+      </AuthContextProvider>
     </>
   )
 }

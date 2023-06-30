@@ -16,8 +16,9 @@ import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import GroupsIcon from '@mui/icons-material/Groups';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { authContext } from "../lib/store/authContext";
 export default function HeaderNav() {
+  const { user, logout } = React.useContext(authContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleIconClick = (event) => {
@@ -27,11 +28,10 @@ export default function HeaderNav() {
     setAnchorEl(null);
   };
 
-  // const { currentUser, logout } = useAuth();
   const router = useRouter();
   const handleLogout = async () => {
     setTimeout(() => router.push(`/`), 1000);
-    // setTimeout(() => logout(), 1000);
+    setTimeout(() => logout(), 1000);
     setOpenSnackbar(true);
   };
 
@@ -70,7 +70,7 @@ export default function HeaderNav() {
                   border: 0.5,
                   borderColor: "white",
                 }}
-                src="../profile.png"
+                src={user?.photoURL}
               ></Avatar>
             </IconButton>
           </Tooltip>
