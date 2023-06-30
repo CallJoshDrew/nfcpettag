@@ -21,7 +21,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 import GoogleIcon from "@mui/icons-material/Google";
-import AppleIcon from "@mui/icons-material/Apple";
 
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -33,7 +32,7 @@ export default function Login() {
 
   useEffect(() => {
     setIsClient(true);
-    setAuth(require("../../../FirebaseConfig").auth);
+    setAuth(require("../lib/firebase/index.jsx").auth);
   }, []);
   const router = useRouter();
   const [openSnackbar, setOpenSnackbar] = useState(false);

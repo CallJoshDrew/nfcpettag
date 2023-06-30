@@ -30,7 +30,7 @@ export default function Register() {
 
   useEffect(() => {
     setIsClient(true);
-    setAuth(require("../../../FirebaseConfig").auth);
+    setAuth(require("../lib/firebase/index.jsx").auth);
   }, []);
   const router = useRouter();
   const [openSnackbar, setOpenSnackbar] = useState(false);
