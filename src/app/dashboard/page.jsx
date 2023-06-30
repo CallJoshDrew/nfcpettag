@@ -68,7 +68,7 @@ export default function Dashboard() {
           <CardMedia
             component="img"
             sx={{ width: 120, borderRadius: "4px" , maxHeight:"140px"}}
-            image="/cat.jpg"
+            image="/cat2.jpg"
             alt="chloe"
           />
           <Grid

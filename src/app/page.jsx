@@ -71,7 +71,7 @@ export default function Home() {
           "Help! I'm lost?"
         </Typography>
       </Box>
-      <CardMedia component="img" height="240" image="/cat.jpg" alt="Dog" />
+      <CardMedia component="img" height="240" image="/cat2.jpg" alt="Dog" />
       <Box backgroundColor="white" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="#0E4B17">
           No Worries! Just tap and get it home!

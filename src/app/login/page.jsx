@@ -86,7 +86,7 @@ export default function Login() {
       <CardMedia
         component="img"
         height="240"
-        image="/login.jpg"
+        image="/login2.jpg"
         alt="login"
       />
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">

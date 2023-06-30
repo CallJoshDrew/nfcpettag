@@ -16,7 +16,7 @@ export default function Community() {
       <CardMedia
         component="img"
         height="240"
-        image="/registeration.jpg"
+        image="/registeration2.jpg"
         alt="Registeration"
       />
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
