@@ -28,7 +28,7 @@ export default function Dashboard() {
       alignItems="center"
       justifyContent="flex-start"
       direction="column"
-      margin="90px 0 90px"
+      margin="70px 0 90px"
     >
       <Typography
         variant="h6"
@@ -60,13 +60,20 @@ export default function Dashboard() {
         <Card sx={{ display: "flex", padding: "10px" }}>
           <CardMedia
             component="img"
-            sx={{ width: 120, borderRadius: "4px" }}
+            sx={{ width: 120, borderRadius: "4px" , maxHeight:"140px"}}
             image="/cat.jpg"
             alt="chloe"
           />
-          <Grid container justifyContent="flex-start" padding="0 15px">
+          <Grid
+            container
+            justifyContent="flex-start"
+            padding="0 15px"
+            spacing={0.3}
+          >
             <Grid item xs={12}>
-              <Typography variant="h7">Chloe</Typography>
+              <Typography variant="h7" color="text.secondary">
+                Name: Chloe
+              </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="h7" color="text.secondary">
@@ -80,11 +87,6 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="h7" color="text.secondary">
-                Pet Type: Dog
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h7" color="text.secondary">
                 Breed: Shepherd
               </Typography>
             </Grid>
@@ -94,22 +96,20 @@ export default function Dashboard() {
               onClick={() => {
                 setTimeout(() => router.push(`/dashboard/mypets/chloe`), 1000);
               }}
-              size="small"
-              startIcon={<EditIcon />}
-              sx={{ padding: "8px 15px" }}
+              sx={{ padding: "8px 15px", fontSize: "0.7rem" }}
             >
               Edit
             </Button>
           </Grid>
         </Card>
       </Box>
-      <Link href="/addmorepets" style={{ textDecoration: "none" }}>
+      {/* <Link href="/dashboard/addmorepets" style={{ textDecoration: "none" }}>
         <Typography
-          sx={{ color: "red", fontWeight: "bold", paddingLeft: "30px" }}
+          sx={{ color: "#ed6c02", fontWeight: "bold", paddingLeft: "30px" }}
         >
           Add More Pets
         </Typography>
-      </Link>
+      </Link> */}
       <Box
         display="flex"
         direction="row"
@@ -123,15 +123,17 @@ export default function Dashboard() {
           <Grid container justifyContent="flex-start" padding="0 15px">
             <Typography>
               Alert our communities when you loss your beloved pet. Just press
-              the "Help" Button to share your Pet Info with our communities.
+              the "Help" Button to share your Pet Info with our community.
             </Typography>
             <Button
               variant="contained"
-              color="error"
+              color="warning"
               href="./findmypet/chloe"
-              size="small"
-              startIcon={<EditIcon />}
-              sx={{ padding: "8px 15px", marginTop: "10px" }}
+              sx={{
+                padding: "8px 15px",
+                marginTop: "10px",
+                fontSize: "0.7rem",
+              }}
             >
               Help
             </Button>

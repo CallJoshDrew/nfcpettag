@@ -13,7 +13,7 @@ import { Alert, Grid, Snackbar, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import HomeIcon from '@mui/icons-material/Home';
+import GroupsIcon from '@mui/icons-material/Groups';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -52,11 +52,11 @@ export default function HeaderNav() {
         zIndex="999"
         justifyContent="center"
         alignItems="center"
-        padding="10px 20px"
+        padding="5px 15px"
         backgroundColor="#0E4B17"
       >
         <Grid item xs={10}>
-          <Typography variant="h5" color="white">
+          <Typography variant="h6" color="white">
             NFC PET TAG
           </Typography>
         </Grid>
@@ -65,8 +65,8 @@ export default function HeaderNav() {
             <IconButton onClick={handleIconClick} size="small" sx={{ ml: 2 }}>
               <Avatar
                 sx={{
-                  width: 45,
-                  height: 45,
+                  width: 35,
+                  height: 35,
                   border: 0.5,
                   borderColor: "white",
                 }}
@@ -101,20 +101,6 @@ export default function HeaderNav() {
         <Divider />
         <MenuItem>
           <Link
-            href="/"
-            as="/"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <Box display="flex" alignItems="center" alignContent="center">
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <Typography marginLeft="5px">Home</Typography>
-            </Box>
-          </Link>
-        </MenuItem>
-        <MenuItem>
-          <Link
             href="/dashboard"
             as="/dashboard"
             style={{ textDecoration: "none", color: "black" }}
@@ -138,6 +124,20 @@ export default function HeaderNav() {
                 <PetsIcon />
               </ListItemIcon>
               <Typography marginLeft="5px">Add More</Typography>
+            </Box>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link
+            href="/dashboard/community"
+            as="/dashboard/community"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Box display="flex" alignItems="center" alignContent="center">
+              <ListItemIcon>
+                <GroupsIcon />
+              </ListItemIcon>
+              <Typography marginLeft="5px">Community</Typography>
             </Box>
           </Link>
         </MenuItem>

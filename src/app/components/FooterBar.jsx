@@ -7,7 +7,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PetsIcon from "@mui/icons-material/Pets";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import HomeIcon from '@mui/icons-material/Home';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 export default function Footer({ page }) {
   const router = useRouter();
@@ -42,20 +42,6 @@ export default function Footer({ page }) {
         onChange={handleChange}
       >
         <BottomNavigationAction
-          label="Home"
-          value="./"
-          icon={
-            <HomeIcon
-              style={{ color: "white" }}
-              sx={{
-                "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
-                  color: "#007A78",
-                },
-              }}
-            />
-          }
-        />  
-        <BottomNavigationAction
           label="Dashboard"
           value="./dashboard"
           icon={
@@ -77,6 +63,20 @@ export default function Footer({ page }) {
         label="Profile" value="./dashboard/profile"
           icon={<AccountCircleIcon style={{ color: "white" }} />}
         />
+        <BottomNavigationAction
+          label="Community"
+          value="./dashboard/community"
+          icon={
+            < GroupsIcon
+              style={{ color: "white" }}
+              sx={{
+                "& .MuiBottomNavigationAction-root, .Mui-selected, svg": {
+                  color: "#007A78",
+                },
+              }}
+            />
+          }
+        />  
       </BottomNavigation>
     </Box>
   );

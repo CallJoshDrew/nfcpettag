@@ -11,7 +11,7 @@ export default function MyPet() {
     alignItems="center"
     justifyContent="flex-start"
     direction="column"
-    margin="90px 0 90px"
+    margin="70px 0 90px"
   >
     <Typography
       variant="h6"
