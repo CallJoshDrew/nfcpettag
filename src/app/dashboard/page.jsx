@@ -34,7 +34,7 @@ export default function Dashboard() {
         variant="h6"
         fontWeight="bold"
         margin="20px 10px"
-        padding="0 10px"
+        padding="0 20px"
       >
         Dashboard
       </Typography>

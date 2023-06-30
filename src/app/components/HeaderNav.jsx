@@ -52,7 +52,7 @@ export default function HeaderNav() {
         zIndex="999"
         justifyContent="center"
         alignItems="center"
-        padding="5px 15px"
+        padding="5px 15px 5px 25px"
         backgroundColor="#0E4B17"
       >
         <Grid item xs={10}>
