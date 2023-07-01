@@ -16,22 +16,22 @@ import {
   Alert,
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
-import AppleIcon from "@mui/icons-material/Apple";
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-export default function Register() {
-  const [isClient, setIsClient] = useState(false);
-  const [auth, setAuth] = useState(null);
-  const [snackMsg, setSnackMsg] = useState(null);
 
+export default function Register() {
   useEffect(() => {
     setIsClient(true);
     setAuth(require("../lib/firebase/index.jsx").auth);
   }, []);
+
+  const [isClient, setIsClient] = useState(false);
+  const [auth, setAuth] = useState(null);
+  const [snackMsg, setSnackMsg] = useState(null);
   const router = useRouter();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const vertical = "top";
@@ -59,7 +59,7 @@ export default function Register() {
         });
     }
   };
-  const handleApple = (e) => {};
+  
   const {
     handleSubmit,
     register,
@@ -71,8 +71,17 @@ export default function Register() {
       password: "",
     },
   });
-
-  const onSubmit = (data) => {};
+  const signUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const onSubmit = async (data) => {
+    try {
+      await signUp(data.email, data.password);
+      router.push("/dashboard");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <Box>
       <CardMedia
@@ -122,6 +131,7 @@ export default function Register() {
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <TextField
               fullWidth
+              onChange={(e) => setEmail(e.target.value)}
               size="small"
               sx={{ marginBottom: "10px" }}
               label="Your Email"
@@ -132,6 +142,7 @@ export default function Register() {
             />
             <TextField
               fullWidth
+              onChange={(e) => setPassword(e.target.value)}
               size="small"
               sx={{ marginBottom: "10px" }}
               label="Your Password"

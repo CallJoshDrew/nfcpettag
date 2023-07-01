@@ -3,13 +3,21 @@
 import { createContext } from "react";
 
 import { auth } from "../firebase/index.jsx";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const authContext = createContext({
   user: null,
   loading: false,
   googleLoginHandler: async () => {},
+  signUp: async () => {},
+  logIn: async () => {},
   logout: async () => {},
 });
 
@@ -28,6 +36,13 @@ export default function AuthContextProvider({ children }) {
       throw error;
     }
   };
+  const signUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const logIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const logout = () => {
     signOut(auth);
@@ -37,6 +52,8 @@ export default function AuthContextProvider({ children }) {
     user,
     loading,
     googleLoginHandler,
+    signUp,
+    logIn,
     logout,
   };
 

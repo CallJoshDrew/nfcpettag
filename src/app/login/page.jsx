@@ -22,7 +22,11 @@ import { useRouter } from "next/navigation";
 
 import GoogleIcon from "@mui/icons-material/Google";
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 
 export default function Login() {
@@ -49,14 +53,14 @@ export default function Login() {
         .then((result) => {
           // Handle the successful sign-in
           console.log("Signed in successfully:", result.user);
-          setSnackMsg("Signed in successfully!")
+          setSnackMsg("Signed in successfully!");
           setTimeout(() => router.push(`/dashboard`), 2000);
           setOpenSnackbar(true);
         })
         .catch((error) => {
           // Handle errors during sign-in
           console.error("Error signing in with Google:", error);
-          setSnackMsg("Error signing in with Google!")
+          setSnackMsg("Error signing in with Google!");
           setOpenSnackbar(true);
         });
     }
@@ -74,28 +78,36 @@ export default function Login() {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const logIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
   };
-  
+  const onSubmit = async (data) => {
+    try {
+      await logIn(data.email, data.password);
+      router.push("/dashboard");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const handleRegister = () => {
     router.push(`/register`);
   };
   return (
     <Box>
-      <CardMedia
-        component="img"
-        height="240"
-        image="/login2.jpg"
-        alt="login"
-      />
+      <CardMedia component="img" height="240" image="/login2.jpg" alt="login" />
       <Box backgroundColor="#0E4B17" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="white">
           It's not my attitude. It's my style.
         </Typography>
       </Box>
       <Paper>
-        <Typography variant="body1" align="center" padding="10px 15px" color="#0E4B17">
+        <Typography
+          variant="body1"
+          align="center"
+          padding="10px 15px"
+          color="#0E4B17"
+        >
           Please sign in/register to use our services. <br />
           All terms and conditions applied.
         </Typography>
@@ -126,17 +138,17 @@ export default function Login() {
             <TextField
               fullWidth
               size="small"
-              sx={{marginBottom:"10px"}}
+              sx={{ marginBottom: "10px" }}
               label="Your Email"
               type="email"
               {...register("email", { required: "Email is required" })}
-                error={!!errors.email}
-                helperText={errors.email?.message}
+              error={!!errors.email}
+              helperText={errors.email?.message}
             />
             <TextField
               fullWidth
               size="small"
-              sx={{marginBottom:"10px"}}
+              sx={{ marginBottom: "10px" }}
               label="Your Password"
               type="password"
               {...register("password", {
@@ -146,8 +158,8 @@ export default function Login() {
               helperText={errors.password?.message}
             />
             <Button fullWidth type="submit" variant="contained" color="success">
-                Sign In
-              </Button>
+              Sign In
+            </Button>
           </form>
         </Stack>
       </Box>
