@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   Alert,
@@ -16,6 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import HeaderNav from "../../components/HeaderNav";
 import Footer from "../../components/FooterBar";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
@@ -26,8 +27,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 
 import { authContext } from "../../lib/store/authContext";
+import Login from "../../login/page";
 export default function Profile() {
-  const { user } = React.useContext(authContext);
+  const { user } = useContext(authContext);
+  if (!user) {
+    return <Login />;
+  } 
   const page = "./dashboard/profile";
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -48,110 +53,118 @@ export default function Profile() {
     setOpenSnackbar(true);
   };
   return (
-    <Box
-      alignItems="center"
-      justifyContent="flex-start"
-      direction="column"
-      margin="70px 0 90px"
-    >
-      <Typography
-        variant="h6"
-        fontWeight="bold"
-        margin="20px 10px"
-        padding="0 20px"
-      >
-        Personal Info
-      </Typography>
-      <Grid
-        container
-        justifyContent="space-around"
+    <>
+      <HeaderNav />
+      <Box
         alignItems="center"
-        alignContent="center"
-        spacing={2}
-        padding="10px 30px"
+        justifyContent="flex-start"
+        direction="column"
+        margin="70px 0 90px"
       >
-        <Grid item xs={12} align="left">
-          <Avatar
-            sx={{ width: 100, height: 100, border: 0.5, borderColor: "black" }}
-            variant="rounded"
-            src={user?.photoURL}
-          ></Avatar>
+        <Typography
+          variant="h6"
+          fontWeight="bold"
+          margin="20px 10px"
+          padding="0 20px"
+        >
+          Personal Info
+        </Typography>
+        <Grid
+          container
+          justifyContent="space-around"
+          alignItems="center"
+          alignContent="center"
+          spacing={2}
+          padding="10px 30px"
+        >
+          <Grid item xs={12} align="left">
+            <Avatar
+              sx={{
+                width: 100,
+                height: 100,
+                border: 0.5,
+                borderColor: "black",
+              }}
+              variant="rounded"
+              src={user?.photoURL}
+            ></Avatar>
+          </Grid>
+          <Grid item xs={2} marginTop="10px">
+            <PhotoCameraIcon fontSize="large" />
+          </Grid>
+          <Grid item xs={10}>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{ padding: "8px 15px" }}
+              color="success"
+            >
+              Change Photo
+            </Button>
+          </Grid>
+          <Grid item xs={2}>
+            <DriveFileRenameOutlineIcon fontSize="large" />
+          </Grid>
+          <Grid item xs={10}>
+            <TextField id="Name" label="Name" fullWidth />
+          </Grid>
+          <Grid item xs={2}>
+            <EmailIcon fontSize="large" />
+          </Grid>
+          <Grid item xs={10}>
+            <TextField id="email" label="Email" fullWidth />
+          </Grid>
+          <Grid item xs={2}>
+            <PasswordIcon fontSize="large" />
+          </Grid>
+          <Grid item xs={10}>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel htmlFor="outlined-adornment-password">
+                Password
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+          </Grid>
         </Grid>
-        <Grid item xs={2} marginTop="10px">
-          <PhotoCameraIcon fontSize="large" />
-        </Grid>
-        <Grid item xs={10}>
+        <Box padding="0px 30px" marginTop="5px" align="right">
           <Button
             variant="contained"
             size="small"
+            onClick={handleSave}
             sx={{ padding: "8px 15px" }}
             color="success"
           >
-            Change Photo
+            Save
           </Button>
-        </Grid>
-        <Grid item xs={2}>
-          <DriveFileRenameOutlineIcon fontSize="large" />
-        </Grid>
-        <Grid item xs={10}>
-          <TextField id="Name" label="Name" fullWidth />
-        </Grid>
-        <Grid item xs={2}>
-          <EmailIcon fontSize="large" />
-        </Grid>
-        <Grid item xs={10}>
-          <TextField id="email" label="Email" fullWidth />
-        </Grid>
-        <Grid item xs={2}>
-          <PasswordIcon fontSize="large" />
-        </Grid>
-        <Grid item xs={10}>
-          <FormControl variant="outlined" fullWidth>
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
-        </Grid>
-      </Grid>
-      <Box padding="0px 30px" marginTop="5px" align="right">
-        <Button
-          variant="contained"
-          size="small"
-          onClick={handleSave}
-          sx={{ padding: "8px 15px" }}
-          color="success"
+        </Box>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={1000}
+          onClose={handleClosebar}
+          anchorOrigin={{ vertical, horizontal }}
         >
-          Save
-        </Button>
+          <Alert severity="success" sx={{ width: "100%" }}>
+            You have successfully saved!
+          </Alert>
+        </Snackbar>
+        <Footer page={page} sx={{ zIndex: 100 }} />
       </Box>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={1000}
-        onClose={handleClosebar}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert severity="success" sx={{ width: "100%" }}>
-          You have successfully saved!
-        </Alert>
-      </Snackbar>
-      <Footer page={page} sx={{ zIndex: 100 }} />
-    </Box>
+    </>
   );
 }
