@@ -27,7 +27,7 @@ export default function Dashboard() {
   const page = "./dashboard";
   const router = useRouter();
   const { user } = useContext(authContext);
-
+  console.log(user)
   return (
     <>
       {!user && <Login />}

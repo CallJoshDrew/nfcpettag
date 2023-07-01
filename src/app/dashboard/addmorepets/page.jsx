@@ -65,12 +65,10 @@ const spayed = [
 
 export default function AddMorePets() {
   const { user } = useContext(authContext);
-  if (!user) {
-    return <Login />;
-  } 
+
   const page = "./dashboard/addmorepets";
   const [snackMsg, setSnackMsg] = useState(null);
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const vertical = "top";
   const horizontal = "center";
 
@@ -89,169 +87,174 @@ export default function AddMorePets() {
   };
   return (
     <>
-      <HeaderNav />
-      <Box
-        alignItems="center"
-        justifyContent="flex-start"
-        direction="column"
-        margin="70px 0 90px"
-      >
-        <Typography
-          variant="h6"
-          fontWeight="bold"
-          margin="20px 10px"
-          padding="0 20px"
-        >
-          Please fill in details of your pet
-        </Typography>
-
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          alignContent="center"
-          spacing={2}
-          padding="10px 30px"
-        >
-          <Grid item xs={2}>
-            <PetsIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField id="pet name" label="Pet Name" fullWidth />
-          </Grid>
-          <Grid item xs={2}>
-            <Avatar
-              sx={{ width: 33, height: 33, backgroundColor: "black" }}
-              variant="rounded"
-            />
-          </Grid>
-          <Grid item xs={10}>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{ padding: "8px 15px" }}
-              color="success"
-            >
-              Add Photo
-            </Button>
-          </Grid>
-          <Grid item xs={2}>
-            <DescriptionIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField id="Breed/Type" label="Breed/Type" fullWidth />
-          </Grid>
-          <Grid item xs={2}>
-            <StarIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField
-              id="outlined-select-species"
-              select
-              label="Species"
-              defaultValue=""
-              fullWidth
-            >
-              {species.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={2}>
-            <CakeIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField id="Birthday" label="Birthday" fullWidth />
-          </Grid>
-          <Grid item xs={2}>
-            <PetsIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField
-              id="outlined-select-species"
-              select
-              label="Gender"
-              defaultValue=""
-              fullWidth
-            >
-              {gender.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={2}>
-            <LocalHospitalIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <TextField
-              id="outlined-select-sprayed"
-              select
-              label="Spayed or Neutered"
-              defaultValue=""
-              fullWidth
-            >
-              {spayed.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Grid>
-          <Grid item xs={2} marginTop="5px">
-            <LinkIcon fontSize="large" />
-          </Grid>
-          <Grid item xs={10}>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{ padding: "8px 15px" }}
-              onClick={handleCopy}
-              color="success"
-              fullWidth
-            >
-              Copy url for NFC pet tag
-            </Button>
-          </Grid>
-          <Grid item xs={12} align="center">
-            <Typography
-              sx={{
-                padding: "10px",
-                border: 1,
-                borderColor: "#0E4B17",
-                borderRadius: "4px",
-              }}
-            >
-              https://nfcpettag.com/findmypet/chlore
-            </Typography>
-          </Grid>
-        </Grid>
-        <Box padding="0px 30px" marginTop="5px" align="right">
-          <Button
-            variant="contained"
-            size="small"
-            onClick={handleSave}
-            sx={{ padding: "8px 15px" }}
-            color="success"
+      {!user && <Login />}
+      {user && (
+        <>
+          <HeaderNav />
+          <Box
+            alignItems="center"
+            justifyContent="flex-start"
+            direction="column"
+            margin="70px 0 90px"
           >
-            Save
-          </Button>
-        </Box>
-        <Snackbar
-          open={openSnackbar}
-          autoHideDuration={1000}
-          onClose={handleClosebar}
-          anchorOrigin={{ vertical, horizontal }}
-        >
-          <Alert severity="success" sx={{ width: "100%" }}>
-            {snackMsg}
-          </Alert>
-        </Snackbar>
-        <Footer page={page} sx={{ zIndex: 100 }} />
-      </Box>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              margin="20px 10px"
+              padding="0 20px"
+            >
+              Please fill in details of your pet
+            </Typography>
+
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+              spacing={2}
+              padding="10px 30px"
+            >
+              <Grid item xs={2}>
+                <PetsIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField id="pet name" label="Pet Name" fullWidth />
+              </Grid>
+              <Grid item xs={2}>
+                <Avatar
+                  sx={{ width: 33, height: 33, backgroundColor: "black" }}
+                  variant="rounded"
+                />
+              </Grid>
+              <Grid item xs={10}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{ padding: "8px 15px" }}
+                  color="success"
+                >
+                  Add Photo
+                </Button>
+              </Grid>
+              <Grid item xs={2}>
+                <DescriptionIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField id="Breed/Type" label="Breed/Type" fullWidth />
+              </Grid>
+              <Grid item xs={2}>
+                <StarIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField
+                  id="outlined-select-species"
+                  select
+                  label="Species"
+                  defaultValue=""
+                  fullWidth
+                >
+                  {species.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={2}>
+                <CakeIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField id="Birthday" label="Birthday" fullWidth />
+              </Grid>
+              <Grid item xs={2}>
+                <PetsIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField
+                  id="outlined-select-species"
+                  select
+                  label="Gender"
+                  defaultValue=""
+                  fullWidth
+                >
+                  {gender.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={2}>
+                <LocalHospitalIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <TextField
+                  id="outlined-select-sprayed"
+                  select
+                  label="Spayed or Neutered"
+                  defaultValue=""
+                  fullWidth
+                >
+                  {spayed.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={2} marginTop="5px">
+                <LinkIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={10}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{ padding: "8px 15px" }}
+                  onClick={handleCopy}
+                  color="success"
+                  fullWidth
+                >
+                  Copy url for NFC pet tag
+                </Button>
+              </Grid>
+              <Grid item xs={12} align="center">
+                <Typography
+                  sx={{
+                    padding: "10px",
+                    border: 1,
+                    borderColor: "#0E4B17",
+                    borderRadius: "4px",
+                  }}
+                >
+                  https://nfcpettag.com/findmypet/chlore
+                </Typography>
+              </Grid>
+            </Grid>
+            <Box padding="0px 30px" marginTop="5px" align="right">
+              <Button
+                variant="contained"
+                size="small"
+                onClick={handleSave}
+                sx={{ padding: "8px 15px" }}
+                color="success"
+              >
+                Save
+              </Button>
+            </Box>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={1000}
+              onClose={handleClosebar}
+              anchorOrigin={{ vertical, horizontal }}
+            >
+              <Alert severity="success" sx={{ width: "100%" }}>
+                {snackMsg}
+              </Alert>
+            </Snackbar>
+            <Footer page={page} sx={{ zIndex: 100 }} />
+          </Box>
+        </>
+      )}
     </>
   );
 }
