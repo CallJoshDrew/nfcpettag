@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   collection,
   doc,
@@ -25,6 +25,7 @@ import {
   Paper,
   Stack,
   Typography,
+  TextField,
 } from "@mui/material";
 import HeaderNav from "../components/HeaderNav";
 import Footer from "../components/FooterBar";
@@ -42,15 +43,13 @@ export default function Dashboard() {
   const router = useRouter();
   const { user } = useContext(authContext);
 
-  console.log(user)
+  console.log(user);
   const [pets, setPets] = useState([]);
+
   useEffect(() => {
     if (!user?.uid) return console.log("No User ID");
     const fetchPets = async () => {
-      const q = query(
-        collection(db, "myPets", user.uid, "pet"),
-        orderBy("pet", "asc"),
-      );
+      const q = query(collection(db, "myPets", user.uid, "pet"));
       onSnapshot(q, (querySnapshot) => {
         const updatedList = [];
         querySnapshot.forEach((doc) => {
@@ -60,7 +59,6 @@ export default function Dashboard() {
       });
     };
     fetchPets();
-    console.log(pets);
   }, [user?.uid]);
 
   return (
@@ -110,46 +108,45 @@ export default function Dashboard() {
                   image="/cat2.jpg"
                   alt="chloe"
                 />
-                <Grid
-                  container
-                  justifyContent="flex-start"
-                  padding="0 15px"
-                  spacing={0.3}
-                >
-                  <Grid item xs={12}>
-                    <Typography variant="h7" color="text.secondary">
-                      Name: Chloe
-                    </Typography>
-                  </Grid>
-                  {/* <Grid item xs={12}>
-                    <Typography variant="h7" color="text.secondary">
-                      Age: 2 Years Old
-                    </Typography>
-                  </Grid> */}
-                  <Grid item xs={12}>
-                    <Typography variant="h7" color="text.secondary">
-                      Gender: Female
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="h7" color="text.secondary">
-                      Breed: Shepherd
-                    </Typography>
-                  </Grid>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    onClick={() => {
-                      setTimeout(
-                        () => router.push(`/dashboard/mypets/chloe`),
-                        1000
-                      );
-                    }}
-                    sx={{ padding: "8px 15px", fontSize: "0.7rem" }}
+
+                {pets.map(({ petName, breed, species, gender, spayed }) => (
+                  <Grid
+                    container
+                    justifyContent="flex-start"
+                    padding="0 15px"
+                    spacing={0.3}
+                    key={petName + breed + species + gender + spayed}
                   >
-                    Edit
-                  </Button>
-                </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="h7" color="text.secondary">
+                        {petName}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="h7" color="text.secondary">
+                        {gender}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Typography variant="h7" color="text.secondary">
+                        {breed}
+                      </Typography>
+                    </Grid>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      onClick={() => {
+                        setTimeout(
+                          () => router.push(`/dashboard/mypets/${petName}`),
+                          1000
+                        );
+                      }}
+                      sx={{ padding: "8px 15px", fontSize: "0.7rem" }}
+                    >
+                      Edit
+                    </Button>
+                  </Grid>
+                ))}
               </Card>
             </Box>
             {/* <Link href="/dashboard/addmorepets" style={{ textDecoration: "none" }}>
