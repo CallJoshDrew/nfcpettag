@@ -86,11 +86,11 @@ export default function Dashboard() {
                       Name: Chloe
                     </Typography>
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <Typography variant="h7" color="text.secondary">
                       Age: 2 Years Old
                     </Typography>
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <Typography variant="h7" color="text.secondary">
                       Gender: Female

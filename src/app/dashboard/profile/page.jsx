@@ -139,7 +139,7 @@ export default function Profile() {
                   src={photoURL}
                 ></Avatar>
               </Grid>
-              <Grid item xs={2} marginTop="10px">
+              {/* <Grid item xs={2} marginTop="10px">
                 <PhotoCameraIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
@@ -158,21 +158,35 @@ export default function Profile() {
                 >
                   Change Photo
                 </Button>
-              </Grid>
+              </Grid> */}
               <Grid item xs={2}>
                 <DriveFileRenameOutlineIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="Name" label={name} fullWidth />
+                <TextField
+                  id="Name"
+                  label={name}
+                  fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
               <Grid item xs={2}>
                 <EmailIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="email" label={email} fullWidth />
+                <TextField
+                  id="email"
+                  label={email}
+                  fullWidth
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
             </Grid>
-            <Box padding="0px 30px" marginTop="5px" align="right">
+            {/* <Box padding="0px 30px" marginTop="5px" align="right">
               <Button
                 variant="contained"
                 size="small"
@@ -182,7 +196,7 @@ export default function Profile() {
               >
                 Save
               </Button>
-            </Box>
+            </Box> */}
             <Snackbar
               open={openSnackbar}
               autoHideDuration={1000}

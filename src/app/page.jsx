@@ -1,5 +1,5 @@
 "use client";
-
+import React, { useEffect, useId, useState } from "react";
 import {
   Box,
   Button,
@@ -22,12 +22,15 @@ import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
 import Navbar from "./components/HeaderNav";
 import { useRouter } from "next/navigation";
+import { TikTokEmbed, YouTubeEmbed } from "react-social-media-embed";
+
 export default function Home() {
   const page = "./";
   const router = useRouter();
   const handleSignIn = () => {
     router.push(`/login`);
   };
+
   return (
     <Box>
       <Grid
@@ -138,7 +141,7 @@ export default function Home() {
           alignItems="center"
           spacing={1.5}
         >
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <CardMedia
               component="iframe"
               height="200px"
@@ -146,13 +149,31 @@ export default function Home() {
               controls
               image="https://www.youtube.com/embed/3VfxVRQlPP4"
             />
-          </Grid>
+          </Grid> */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <YouTubeEmbed
+              height={220}
+              // placeholderImageUrl="https://i.ytimg.com/vi/HpVOs5imUN0/maxresdefault.jpg?t=1689433655884"
+              url="https://www.youtube.com/embed/3VfxVRQlPP4"
+              width={325}
+            />
+          </div>
+          {/* <div style={{ display: "flex", justifyContent: "center" }} id={id}>
+            <TikTokEmbed
+              url="https://www.tiktok.com/@antiochwave_nfc/video/7251208441165843714"
+              width={325}
+            />
+          </div> */}
           <Grid item xs={12}>
             <Typography variant="body1" color="#0E4B17" fontWeight="bold">
               Above video will show how to use our NFC Pet Tag and services.{" "}
               <br />
-              For more info, please check our FAQ
-              section below.
+              For more info, please check our FAQ section below.
             </Typography>
           </Grid>
           <Grid item xs={12}>

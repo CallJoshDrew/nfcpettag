@@ -120,7 +120,7 @@ export default function AddMorePets() {
               <Grid item xs={10}>
                 <TextField id="pet name" label="Pet Name" fullWidth />
               </Grid>
-              <Grid item xs={2}>
+              {/* <Grid item xs={2}>
                 <Avatar
                   sx={{ width: 33, height: 33, backgroundColor: "black" }}
                   variant="rounded"
@@ -135,7 +135,7 @@ export default function AddMorePets() {
                 >
                   Add Photo
                 </Button>
-              </Grid>
+              </Grid> */}
               <Grid item xs={2}>
                 <DescriptionIcon fontSize="large" />
               </Grid>
@@ -160,12 +160,12 @@ export default function AddMorePets() {
                   ))}
                 </TextField>
               </Grid>
-              <Grid item xs={2}>
+              {/* <Grid item xs={2}>
                 <CakeIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
                 <TextField id="Birthday" label="Birthday" fullWidth />
-              </Grid>
+              </Grid> */}
               <Grid item xs={2}>
                 <PetsIcon fontSize="large" />
               </Grid>
@@ -202,7 +202,7 @@ export default function AddMorePets() {
                   ))}
                 </TextField>
               </Grid>
-              <Grid item xs={2} marginTop="5px">
+              {/* <Grid item xs={2} marginTop="5px">
                 <LinkIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
@@ -228,7 +228,7 @@ export default function AddMorePets() {
                 >
                   https://nfcpettag.com/findmypet/chlore
                 </Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
             <Box padding="0px 30px" marginTop="5px" align="right">
               <Button

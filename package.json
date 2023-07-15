@@ -21,7 +21,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-hook-form": "^7.44.3"
+    "react-hook-form": "^7.44.3",
+    "react-social-media-embed": "^2.3.5"
   },
   "devDependencies": {
     "encoding": "^0.1.13"
