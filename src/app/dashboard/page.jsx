@@ -1,5 +1,18 @@
 "use client";
-
+import React, { useContext, useEffect, useState} from "react";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc,
+  where,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import {
   Box,
   Button,
@@ -20,14 +33,36 @@ import PetsIcon from "@mui/icons-material/Pets";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link.js";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+
 import { authContext } from "../lib/store/authContext";
+import { db } from "../../../FirebaseConfig";
 import Login from "../login/page.jsx";
 export default function Dashboard() {
   const page = "./dashboard";
   const router = useRouter();
   const { user } = useContext(authContext);
+
   console.log(user)
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    if (!user?.uid) return console.log("No User ID");
+    const fetchPets = async () => {
+      const q = query(
+        collection(db, "myPets", user.uid, "pet"),
+        orderBy("pet", "asc"),
+      );
+      onSnapshot(q, (querySnapshot) => {
+        const updatedList = [];
+        querySnapshot.forEach((doc) => {
+          updatedList.push({ id: doc.id, ...doc.data() });
+        });
+        setPets(updatedList);
+      });
+    };
+    fetchPets();
+    console.log(pets);
+  }, [user?.uid]);
+
   return (
     <>
       {!user && <Login />}

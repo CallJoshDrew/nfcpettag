@@ -29,9 +29,11 @@ import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import LinkIcon from "@mui/icons-material/Link";
 import HeaderNav from "../../components/HeaderNav";
 import { authContext } from "../../lib/store/authContext";
+import { db } from "../../../../FirebaseConfig";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import Login from "../../login/page";
 
-const species = [
+const speciesType = [
   {
     value: "Dog",
     label: "Dog",
@@ -41,7 +43,7 @@ const species = [
     label: "Cat",
   },
 ];
-const gender = [
+const genderType = [
   {
     value: "Male",
     label: "Male",
@@ -52,7 +54,7 @@ const gender = [
   },
 ];
 
-const spayed = [
+const spayedCondition = [
   {
     value: "Yes",
     label: "Yes",
@@ -65,8 +67,15 @@ const spayed = [
 
 export default function AddMorePets() {
   const { user } = useContext(authContext);
-
+  
   const page = "./dashboard/addmorepets";
+
+  const [petName, setPetName] = useState("");
+  const [breed, setBreed] = useState("");
+  const [species, setSpecies] = useState("");
+  const [gender, setGender] = useState("");
+  const [spayed, setSpayed] = useState("");
+
   const [snackMsg, setSnackMsg] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const vertical = "top";
@@ -80,7 +89,30 @@ export default function AddMorePets() {
     setTimeout(() => console.log("Saved"), 1000);
     setOpenSnackbar(true);
   };
-  const handleSave = async () => {
+  const handleSpecies = (event) => {
+    setSpecies(event.target.value);
+  };
+  const handleGender = (event) => {
+    setGender(event.target.value);
+  };
+  const handleSpayed = (event) => {
+    setSpayed(event.target.value);
+    console.log(petName, breed, species, gender, spayed, user.uid);
+  };
+  const handleSave = async (e) => {
+    e.preventDefault();
+    await setDoc(
+      doc(db, "myPets", user.uid, "pet", `${petName}`),
+      {
+        petName,
+        breed,
+        species,
+        gender,
+        spayed,
+        createdAt: serverTimestamp(),
+      },
+      { merge: true }
+    );
     setSnackMsg("You have successfully saved!");
     setTimeout(() => console.log("Saved"), 1000);
     setOpenSnackbar(true);
@@ -118,7 +150,7 @@ export default function AddMorePets() {
                 <PetsIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="pet name" label="Pet Name" fullWidth />
+                <TextField id="pet name" label="Pet Name" fullWidth onInput={(e) => setPetName(e.target.value)}/>
               </Grid>
               {/* <Grid item xs={2}>
                 <Avatar
@@ -140,7 +172,7 @@ export default function AddMorePets() {
                 <DescriptionIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="Breed/Type" label="Breed/Type" fullWidth />
+                <TextField id="Breed/Type" label="Breed/Type" fullWidth onInput={(e) => setBreed(e.target.value)}/>
               </Grid>
               <Grid item xs={2}>
                 <StarIcon fontSize="large" />
@@ -150,10 +182,11 @@ export default function AddMorePets() {
                   id="outlined-select-species"
                   select
                   label="Species"
+                  onChange={handleSpecies}
                   defaultValue=""
                   fullWidth
                 >
-                  {species.map((option) => (
+                  {speciesType.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -171,13 +204,14 @@ export default function AddMorePets() {
               </Grid>
               <Grid item xs={10}>
                 <TextField
-                  id="outlined-select-species"
+                  id="outlined-select-gender"
                   select
                   label="Gender"
+                  onChange={handleGender}
                   defaultValue=""
                   fullWidth
                 >
-                  {gender.map((option) => (
+                  {genderType.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -189,13 +223,14 @@ export default function AddMorePets() {
               </Grid>
               <Grid item xs={10}>
                 <TextField
-                  id="outlined-select-sprayed"
+                  id="outlined-select-spayed"
                   select
                   label="Spayed or Neutered"
+                  onChange={handleSpayed}
                   defaultValue=""
                   fullWidth
                 >
-                  {spayed.map((option) => (
+                  {spayedCondition.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>

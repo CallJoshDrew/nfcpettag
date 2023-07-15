@@ -77,7 +77,7 @@ export default function Home() {
       <CardMedia component="img" height="240" image="/cat2.jpg" alt="Dog" />
       <Box backgroundColor="white" align="center" padding="10px 0px">
         <Typography variant="h7" fontWeight="bold" color="#0E4B17">
-          No Worries! Just tap and get it home!
+          No Worries! Just tap and get you home!
         </Typography>
       </Box>
       <Box backgroundColor="#0E4B17" align="center" padding="30px 25px">
@@ -141,15 +141,6 @@ export default function Home() {
           alignItems="center"
           spacing={1.5}
         >
-          {/* <Grid item xs={12}>
-            <CardMedia
-              component="iframe"
-              height="200px"
-              autoPlay
-              controls
-              image="https://www.youtube.com/embed/3VfxVRQlPP4"
-            />
-          </Grid> */}
           <div
             style={{
               display: "flex",
