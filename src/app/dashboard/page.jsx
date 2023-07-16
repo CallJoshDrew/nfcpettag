@@ -26,6 +26,7 @@ import {
   Stack,
   Typography,
   TextField,
+  Avatar,
 } from "@mui/material";
 import HeaderNav from "../components/HeaderNav";
 import Footer from "../components/FooterBar";
@@ -47,7 +48,7 @@ export default function Dashboard() {
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
-    if (!user?.uid) return console.log("No User ID");
+    if (!user?.uid) return;
     const fetchPets = async () => {
       const q = query(collection(db, "myPets", user.uid, "pet"));
       onSnapshot(q, (querySnapshot) => {
@@ -93,43 +94,44 @@ export default function Dashboard() {
               <PetsIcon />
               <Typography marginLeft="5px">My Pet</Typography>
             </Box>
-            <Box
-              display="flex"
-              justifyContent="flex-start"
-              alignItems="center"
-              alignContent="center"
-              margin="10px"
-              padding="0 10px"
-            >
-              <Card sx={{ display: "flex", padding: "10px" }}>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 120, borderRadius: "4px", maxHeight: "140px" }}
-                  image="/cat2.jpg"
-                  alt="chloe"
-                />
+            {pets.map(({ petName, breed, species, gender, spayed }) => (
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                alignItems="center"
+                alignContent="center"
+                margin="10px"
+                padding="0 10px"
+                key={petName + breed + species + gender + spayed}
+              >
+                <Card sx={{ display: "flex", padding: "10px" }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ width: 120, borderRadius: "4px", maxHeight: "140px" }}
+                    image="/pet.jpg"
+                    alt="chloe"
+                  />
+                  {/* <Avatar sx={{ bgcolor: "green" }} variant="rounded"><PetsIcon/></Avatar> */}
 
-                {pets.map(({ petName, breed, species, gender, spayed }) => (
                   <Grid
                     container
                     justifyContent="flex-start"
                     padding="0 15px"
                     spacing={0.3}
-                    key={petName + breed + species + gender + spayed}
                   >
                     <Grid item xs={12}>
                       <Typography variant="h7" color="text.secondary">
-                        {petName}
+                        Name: {petName}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <Typography variant="h7" color="text.secondary">
-                        {gender}
+                        Gender: {gender}
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <Typography variant="h7" color="text.secondary">
-                        {breed}
+                        Breed: {breed}
                       </Typography>
                     </Grid>
                     <Button
@@ -141,14 +143,14 @@ export default function Dashboard() {
                           1000
                         );
                       }}
-                      sx={{ padding: "8px 15px", fontSize: "0.7rem" }}
+                      sx={{ padding: "4px 8px", fontSize: "0.7rem" }}
                     >
                       Edit
                     </Button>
                   </Grid>
-                ))}
-              </Card>
-            </Box>
+                </Card>
+              </Box>
+            ))}
             {/* <Link href="/dashboard/addmorepets" style={{ textDecoration: "none" }}>
         <Typography
           sx={{ color: "#ed6c02", fontWeight: "bold", paddingLeft: "30px" }}
