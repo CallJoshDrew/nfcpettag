@@ -17,6 +17,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import Footer from "../../components/FooterBar";
 import Avatar from "@mui/material/Avatar";
@@ -67,7 +70,7 @@ const spayedCondition = [
 
 export default function AddMorePets() {
   const { user } = useContext(authContext);
-  
+
   const page = "./dashboard/addmorepets";
 
   const [petName, setPetName] = useState("");
@@ -75,6 +78,7 @@ export default function AddMorePets() {
   const [species, setSpecies] = useState("");
   const [gender, setGender] = useState("");
   const [spayed, setSpayed] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const [snackMsg, setSnackMsg] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -86,8 +90,20 @@ export default function AddMorePets() {
   };
   const handleCopy = async () => {
     setSnackMsg("You have copied the URL!");
-    setTimeout(() => console.log("Saved"), 1000);
+    setTimeout(() => console.log("Saved"), 800);
     setOpenSnackbar(true);
+  };
+  const handleBirthday = (event) => {
+    setBirthday(event.target.value);
+  };
+  const handleDateFormat = (newValue) => {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    };
+    setBirthday(new Date(newValue).toLocaleDateString("en-US", options));
   };
   const handleSpecies = (event) => {
     setSpecies(event.target.value);
@@ -107,6 +123,7 @@ export default function AddMorePets() {
         petName,
         breed,
         species,
+        birthday,
         gender,
         spayed,
         createdAt: serverTimestamp(),
@@ -114,7 +131,7 @@ export default function AddMorePets() {
       { merge: true }
     );
     setSnackMsg("You have successfully saved!");
-    setTimeout(() => console.log("Saved"), 1000);
+    setTimeout(() => console.log("Saved"), 800);
     setOpenSnackbar(true);
   };
   return (
@@ -150,7 +167,12 @@ export default function AddMorePets() {
                 <PetsIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="pet name" label="Pet Name" fullWidth onInput={(e) => setPetName(e.target.value)}/>
+                <TextField
+                  id="pet name"
+                  label="Pet Name"
+                  fullWidth
+                  onInput={(e) => setPetName(e.target.value)}
+                />
               </Grid>
               {/* <Grid item xs={2}>
                 <Avatar
@@ -172,7 +194,12 @@ export default function AddMorePets() {
                 <DescriptionIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="Breed/Type" label="Breed/Type" fullWidth onInput={(e) => setBreed(e.target.value)}/>
+                <TextField
+                  id="Breed/Type"
+                  label="Breed/Type"
+                  fullWidth
+                  onInput={(e) => setBreed(e.target.value)}
+                />
               </Grid>
               <Grid item xs={2}>
                 <StarIcon fontSize="large" />
@@ -193,12 +220,48 @@ export default function AddMorePets() {
                   ))}
                 </TextField>
               </Grid>
-              {/* <Grid item xs={2}>
+              <Grid item xs={2}>
                 <CakeIcon fontSize="large" />
               </Grid>
               <Grid item xs={10}>
-                <TextField id="Birthday" label="Birthday" fullWidth />
-              </Grid> */}
+                <TextField
+                  id="Birthday"
+                  label="Birthday: Day/Month/Year"
+                  fullWidth
+                  onInput={(e) => setBirthday(e.target.value)}
+                />
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Birthday"
+                  value={birthday}
+                  onChange={(newValue) => {
+                    handleDateFormat(newValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      sx={{
+                        "& .MuiInputLabel-root": { color: "white" },
+                        "& .MuiOutlinedInput-root.Mui-focused": {
+                          "& > fieldset": {
+                            borderColor: "#0FC432",
+                          },
+                        },
+                        input: {
+                          color: "white",
+                        },
+                      }}
+                      size="small"
+                      variant="outlined"
+                      placeholder="Select Date"
+                      focused
+                      {...params}
+                    />
+                  )}
+                  fullWidth
+                  focused
+                />
+              </LocalizationProvider> */}
+              </Grid>
               <Grid item xs={2}>
                 <PetsIcon fontSize="large" />
               </Grid>
@@ -278,7 +341,7 @@ export default function AddMorePets() {
             </Box>
             <Snackbar
               open={openSnackbar}
-              autoHideDuration={1000}
+              autoHideDuration={800}
               onClose={handleClosebar}
               anchorOrigin={{ vertical, horizontal }}
             >

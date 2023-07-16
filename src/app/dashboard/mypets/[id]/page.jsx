@@ -76,6 +76,7 @@ export default function MyPet() {
   const [species, setSpecies] = useState("");
   const [gender, setGender] = useState("");
   const [spayed, setSpayed] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const [snackMsg, setSnackMsg] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -93,6 +94,7 @@ export default function MyPet() {
         setSpecies(petSnap.data().species);
         setGender(petSnap.data().gender);
         setSpayed(petSnap.data().spayed);
+        setBirthday(petSnap.data().birthday);
       } else {
         console.log("No such document!");
       }
@@ -120,7 +122,7 @@ export default function MyPet() {
   };
   const handleSpayed = (event) => {
     setSpayed(event.target.value);
-    console.log(petName, breed, species, gender, spayed, user.uid);
+    console.log(petName, breed, species, birthday, gender, spayed, user.uid);
   };
   const handleSave = async (e) => {
     e.preventDefault();
@@ -130,6 +132,7 @@ export default function MyPet() {
         petName,
         breed,
         species,
+        birthday,
         gender,
         spayed,
         createdAt: serverTimestamp(),
@@ -137,7 +140,7 @@ export default function MyPet() {
       { merge: true }
     );
     setSnackMsg("You have successfully saved!");
-    setTimeout(() => console.log("Saved"), 1000);
+    setTimeout(() => console.log("Saved"), 800);
     setOpenSnackbar(true);
   };
   return (
@@ -232,12 +235,17 @@ export default function MyPet() {
                   ))}
                 </TextField>
               </Grid>
-              {/* <Grid item xs={2}>
-                <CakeIcon fontSize="large" />
+              <Grid item xs={4}>
+                <Typography>Birthday</Typography>
               </Grid>
-              <Grid item xs={10}>
-                <TextField id="Birthday" label="Birthday" fullWidth />
-              </Grid> */}
+              <Grid item xs={8}>
+                <TextField
+                  id="Birthday"
+                  label={birthday}
+                  fullWidth
+                  onInput={(e) => setBirthday(e.target.value)}
+                />
+              </Grid>
               <Grid item xs={4}>
                 <Typography>Gender</Typography>
               </Grid>
@@ -317,7 +325,7 @@ export default function MyPet() {
             </Box>
             <Snackbar
               open={openSnackbar}
-              autoHideDuration={1000}
+              autoHideDuration={800}
               onClose={handleClosebar}
               anchorOrigin={{ vertical, horizontal }}
             >
