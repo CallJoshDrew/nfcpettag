@@ -70,7 +70,7 @@ export default function MyPet() {
   const { user } = useContext(authContext);
   const page = "./dashboard/mypets/";
   const params = useParams();
-  // console.log(params.id);
+  console.log(params.id);
   const [petName, setPetName] = useState("");
   const [breed, setBreed] = useState("");
   const [species, setSpecies] = useState("");
@@ -100,16 +100,16 @@ export default function MyPet() {
       }
     };
     fetchPet();
-  }, [user?.uid]);
+  }, [user?.uid, params.id]);
 
   const handleClosebar = () => {
     setOpenSnackbar(false);
   };
   const handleCopy = async () => {
-    navigator.clipboard.writeText(`https://nfcpettag.com/findmypet/${petName}`);
+    navigator.clipboard.writeText(`https://nfcpettag.shop/findmypet/${petName}?id=ybMQbAV4AyOER5zAhfUUlJWSGyH2`);
     setSnackMsg(`You have copied the URL of ${petName}!`);
     setTimeout(
-      () => console.log(`copied: https://nfcpettag.com/findmypet/${petName}`),
+      () => console.log(`copied: https://nfcpettag.shop/findmypet/${petName}?id=ybMQbAV4AyOER5zAhfUUlJWSGyH2`),
       1000
     );
     setOpenSnackbar(true);
@@ -308,7 +308,7 @@ export default function MyPet() {
                     borderRadius: "4px",
                   }}
                 >
-                  https://nfcpettag.com/findmypet/{petName}
+                  https://nfcpettag.shop/findmypet/{petName}
                 </Typography>
               </Grid> */}
             </Grid>

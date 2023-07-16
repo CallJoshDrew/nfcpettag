@@ -324,7 +324,7 @@ export default function AddMorePets() {
                     borderRadius: "4px",
                   }}
                 >
-                  https://nfcpettag.com/findmypet/chlore
+                  https://nfcpettag.shop/findmypet/chlore
                 </Typography>
               </Grid> */}
             </Grid>
